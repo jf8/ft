@@ -32,9 +32,64 @@ import io.github.jhipster.config.JHipsterProperties;
 public class CacheConfiguration {
     private GitProperties gitProperties;
     private BuildProperties buildProperties;
+    private  JHipsterProperties jHipsterProperties;
 
     @Bean
     public javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration(JHipsterProperties jHipsterProperties) {
+        MutableConfiguration<Object, Object> jcacheConfig = new MutableConfiguration<>();
+
+        URI redisUri = URI.create(jHipsterProperties.getCache().getRedis().getServer()[0]);
+
+        Config config = new Config();
+        if (jHipsterProperties.getCache().getRedis().isCluster()) {
+            ClusterServersConfig clusterServersConfig = config
+                .useClusterServers()
+                .setMasterConnectionPoolSize(jHipsterProperties.getCache().getRedis().getConnectionPoolSize())
+                .setMasterConnectionMinimumIdleSize(jHipsterProperties.getCache().getRedis().getConnectionMinimumIdleSize())
+                .setSubscriptionConnectionPoolSize(jHipsterProperties.getCache().getRedis().getSubscriptionConnectionPoolSize())
+                .addNodeAddress(jHipsterProperties.getCache().getRedis().getServer());
+
+            if (redisUri.getUserInfo() != null) {
+                clusterServersConfig.setPassword(redisUri.getUserInfo().substring(redisUri.getUserInfo().indexOf(':') + 1));
+            }
+        } else {
+            SingleServerConfig singleServerConfig = config
+                .useSingleServer()
+                .setConnectionPoolSize(jHipsterProperties.getCache().getRedis().getConnectionPoolSize())
+                .setConnectionMinimumIdleSize(jHipsterProperties.getCache().getRedis().getConnectionMinimumIdleSize())
+                .setSubscriptionConnectionPoolSize(jHipsterProperties.getCache().getRedis().getSubscriptionConnectionPoolSize())
+                .setAddress(jHipsterProperties.getCache().getRedis().getServer()[0]).setDatabase(12);
+
+            if (redisUri.getUserInfo() != null) {
+                singleServerConfig.setPassword(redisUri.getUserInfo().substring(redisUri.getUserInfo().indexOf(':') + 1));
+            }
+        }
+        jcacheConfig.setStatisticsEnabled(true);
+        jcacheConfig.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, jHipsterProperties.getCache().getRedis().getExpiration())));
+        return RedissonConfiguration.fromInstance(Redisson.create(config), jcacheConfig);
+    }
+
+    @Bean
+    public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cm) {
+        return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cm);
+    }
+
+    @Bean
+    public JCacheManagerCustomizer cacheManagerCustomizer(javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
+        return cm -> {
+            createCache(cm, com.kyanite.ft.repository.UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.repository.UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.User.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.Authority.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            // jhipster-needle-redis-add-entry
+            createCache(cm,Constants.ACCESS_TOKEN,createConfig(Constants.ACCESS_TOKEN_SECONDS));//ACCESS_TOKEN_SECONDS
+            createCache(cm,Constants.JSAPI_TICKET,createConfig(Constants.JSAPI_TICKET_CACHE_TIME));//ACCESS_TOKEN_SECONDS
+            createCache(cm,Constants.REPEAT_LOGIN,createConfig(Constants.REPEAT_LOGIN_CACHE_TIME));//ACCESS_TOKEN_SECONDS
+        };
+    }
+
+    private javax.cache.configuration.Configuration<Object, Object> createConfig(long seconds) {
         MutableConfiguration<Object, Object> jcacheConfig = new MutableConfiguration<>();
 
         URI redisUri = URI.create(jHipsterProperties.getCache().getRedis().getServer()[0]);
@@ -64,26 +119,16 @@ public class CacheConfiguration {
             }
         }
         jcacheConfig.setStatisticsEnabled(true);
-        jcacheConfig.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, jHipsterProperties.getCache().getRedis().getExpiration())));
-        return RedissonConfiguration.fromInstance(Redisson.create(config), jcacheConfig);
+        jcacheConfig.setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.SECONDS, seconds)));
+        javax.cache.configuration.Configuration<Object, Object> configuration = RedissonConfiguration.fromInstance(Redisson.create(config), jcacheConfig);
+        return configuration;
     }
 
-    @Bean
-    public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cm) {
-        return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cm);
+    @Autowired(required = false)
+    public void setJHipsterProperties(JHipsterProperties jHipsterProperties) {
+        this.jHipsterProperties = jHipsterProperties;
     }
 
-    @Bean
-    public JCacheManagerCustomizer cacheManagerCustomizer(javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
-        return cm -> {
-            createCache(cm, com.kyanite.ft.repository.UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
-            createCache(cm, com.kyanite.ft.repository.UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
-            createCache(cm, com.kyanite.ft.domain.User.class.getName(), jcacheConfiguration);
-            createCache(cm, com.kyanite.ft.domain.Authority.class.getName(), jcacheConfiguration);
-            createCache(cm, com.kyanite.ft.domain.User.class.getName() + ".authorities", jcacheConfiguration);
-            // jhipster-needle-redis-add-entry
-        };
-    }
 
     private void createCache(javax.cache.CacheManager cm, String cacheName, javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
         javax.cache.Cache<Object, Object> cache = cm.getCache(cacheName);
