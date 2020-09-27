@@ -1,0 +1,94 @@
+{
+  "name": "DdBookDept",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "parentid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDeptGroup",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autoAddUser",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "deptHiding",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "deptPermits",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userPermits",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "outerDept",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "outerPermitDepts",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "outerPermitUsers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orgDeptOwner",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "deptManagerUseridList",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sourceIdentifier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ext",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "ddBookPerson",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "ddBookPerson",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ddUser",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "ddUser",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200927030948",
+  "entityTableName": "dd_book_dept",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "ft"
+}

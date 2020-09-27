@@ -1,0 +1,94 @@
+{
+  "name": "VFtUserSignInfo",
+  "fields": [
+    {
+      "fieldName": "phoneCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "seat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "groupIds",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "nameCn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyCn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "titleCn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "titleEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ddid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "updateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "signTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "meetId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200927031148",
+  "entityTableName": "v_ft_user_sign_info",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "ft"
+}

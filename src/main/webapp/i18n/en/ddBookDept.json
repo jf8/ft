@@ -1,0 +1,38 @@
+{
+  "ftApp": {
+    "ddBookDept": {
+      "home": {
+        "title": "Dd Book Depts",
+        "createLabel": "Create a new Dd Book Dept",
+        "createOrEditLabel": "Create or edit a Dd Book Dept",
+        "notFound": "No Dd Book Depts found"
+      },
+      "created": "A new Dd Book Dept is created with identifier {{ param }}",
+      "updated": "A Dd Book Dept is updated with identifier {{ param }}",
+      "deleted": "A Dd Book Dept is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dd Book Dept {{ id }}?"
+      },
+      "detail": {
+        "title": "Dd Book Dept"
+      },
+      "name": "Name",
+      "orderNum": "Order Num",
+      "parentid": "Parentid",
+      "createDeptGroup": "Create Dept Group",
+      "autoAddUser": "Auto Add User",
+      "deptHiding": "Dept Hiding",
+      "deptPermits": "Dept Permits",
+      "userPermits": "User Permits",
+      "outerDept": "Outer Dept",
+      "outerPermitDepts": "Outer Permit Depts",
+      "outerPermitUsers": "Outer Permit Users",
+      "orgDeptOwner": "Org Dept Owner",
+      "deptManagerUseridList": "Dept Manager Userid List",
+      "sourceIdentifier": "Source Identifier",
+      "ext": "Ext",
+      "ddBookPerson": "Dd Book Person",
+      "ddUser": "Dd User"
+    }
+  }
+}

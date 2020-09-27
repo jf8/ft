@@ -1,0 +1,38 @@
+{
+  "ftApp": {
+    "ddBookDept": {
+      "home": {
+        "title": "Dd Book Depts",
+        "createLabel": "创建新 Dd Book Dept",
+        "createOrEditLabel": "创建或编辑 Dd Book Dept",
+        "notFound": "No Dd Book Depts found"
+      },
+      "created": "Dd Book Dept {{ param }} 创建成功",
+      "updated": "Dd Book Dept {{ param }} 更新成功",
+      "deleted": "Dd Book Dept {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Dd Book Dept {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Dd Book Dept"
+      },
+      "name": "Name",
+      "orderNum": "Order Num",
+      "parentid": "Parentid",
+      "createDeptGroup": "Create Dept Group",
+      "autoAddUser": "Auto Add User",
+      "deptHiding": "Dept Hiding",
+      "deptPermits": "Dept Permits",
+      "userPermits": "User Permits",
+      "outerDept": "Outer Dept",
+      "outerPermitDepts": "Outer Permit Depts",
+      "outerPermitUsers": "Outer Permit Users",
+      "orgDeptOwner": "Org Dept Owner",
+      "deptManagerUseridList": "Dept Manager Userid List",
+      "sourceIdentifier": "Source Identifier",
+      "ext": "Ext",
+      "ddBookPerson": "Dd Book Person",
+      "ddUser": "Dd User"
+    }
+  }
+}

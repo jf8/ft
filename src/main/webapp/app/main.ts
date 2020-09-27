@@ -30,6 +30,10 @@ import ConfigurationService from '@/admin/configuration/configuration.service';
 import TrackerService from './admin/tracker/tracker.service';
 /* tslint:disable */
 
+import DdBookDeptService from '@/entities/dd-book-dept-ft/dd-book-dept-ft.service';
+import DdBookPersonService from '@/entities/dd-book-person-ft/dd-book-person-ft.service';
+import VFtUserSignInfoService from '@/entities/v-ft-user-sign-info-ft/v-ft-user-sign-info-ft.service';
+import DdUserService from '@/entities/dd-user-ft/dd-user-ft.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -94,6 +98,10 @@ new Vue({
     trackerService: () => trackerService,
     alertService: () => alertService,
     translationService: () => translationService,
+    ddBookDeptService: () => new DdBookDeptService(),
+    ddBookPersonService: () => new DdBookPersonService(),
+    vFtUserSignInfoService: () => new VFtUserSignInfoService(),
+    ddUserService: () => new DdUserService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

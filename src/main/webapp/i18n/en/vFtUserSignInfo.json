@@ -1,0 +1,40 @@
+{
+  "ftApp": {
+    "vFtUserSignInfo": {
+      "home": {
+        "title": "V Ft User Sign Infos",
+        "createLabel": "Create a new V Ft User Sign Info",
+        "createOrEditLabel": "Create or edit a V Ft User Sign Info",
+        "notFound": "No V Ft User Sign Infos found"
+      },
+      "created": "A new V Ft User Sign Info is created with identifier {{ param }}",
+      "updated": "A V Ft User Sign Info is updated with identifier {{ param }}",
+      "deleted": "A V Ft User Sign Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete V Ft User Sign Info {{ id }}?"
+      },
+      "detail": {
+        "title": "V Ft User Sign Info"
+      },
+      "phoneCode": "Phone Code",
+      "phone": "Phone",
+      "email": "Email",
+      "seat": "Seat",
+      "groupIds": "Group Ids",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "nameCn": "Name Cn",
+      "nameEn": "Name En",
+      "companyCn": "Company Cn",
+      "companyEn": "Company En",
+      "titleCn": "Title Cn",
+      "titleEn": "Title En",
+      "remark": "Remark",
+      "ddid": "Ddid",
+      "updateTime": "Update Time",
+      "createTime": "Create Time",
+      "signTime": "Sign Time",
+      "meetId": "Meet Id"
+    }
+  }
+}
