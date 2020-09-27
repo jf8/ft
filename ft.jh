@@ -1,0 +1,123 @@
+
+
+
+
+entity DdBookDept {
+    name String,
+  	orderNum  Long,
+    parentid Long,
+    createDeptGroup Boolean,
+    autoAddUser Boolean,
+    deptHiding Boolean,
+    deptPermits String,
+    userPermits String,
+    outerDept Boolean,
+    outerPermitDepts String,
+    outerPermitUsers String,
+    orgDeptOwner String,
+    deptManagerUseridList String,
+    sourceIdentifier String,
+    ext String
+}
+
+entity DdBookPerson {
+        unionid String,
+        remark String,
+        userid  String,
+        isLeaderInDepts  String,
+        isBoss  Boolean,
+        hiredDate BigDecimal,
+        isSenior  Boolean,
+        tel  String,
+        department String,
+        email String,
+        workPlace  String ,
+        orderInDepts  String,
+        mobile  String ,
+        errmsg  String ,
+        active  Boolean,
+        avatar  String ,
+        isAdmin Boolean,
+        isHide Boolean,
+        jobnumber  String,
+        name  String,
+        extattr String,
+        stateCode  String,
+        position  String,
+        roles  String
+}
+
+
+entity VFtUserSignInfo {
+    phoneCode String,
+    phone String,
+    email String,
+    seat String ,
+    groupIds String,
+    startTime Instant,
+    endTime Instant,
+    nameCn String,
+    nameEn String ,
+    companyCn String,
+    companyEn String,
+    titleCn String,
+    titleEn String,
+    remark String,
+    ddid String,
+    updateTime Instant,
+    createTime Instant,
+    signTime Instant,
+    meetId Long
+}
+
+
+
+entity DdUser {
+        unionid String,
+        remark String,
+        userid  String,
+        isLeaderInDepts  String,
+        isBoss  Boolean,
+        hiredDate BigDecimal,
+        isSenior  Boolean,
+        tel  String,
+        department String,
+        workPlace  String ,
+        orderInDepts  String,
+        mobile  String ,
+        errmsg  String ,
+        active  Boolean,
+        avatar  String ,
+        isAdmin Boolean,
+        isHide Boolean,
+        jobnumber  String,
+        name  String,
+        extattr String,
+        stateCode  String,
+        position  String,
+        roles  String
+}
+
+
+
+relationship ManyToMany {
+    DdBookDept to  DdBookPerson
+}
+
+
+relationship OneToMany {
+   DdUser  to  DdBookDept
+}
+
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass
+
+// Set an angular suffix
+angularSuffix * with ft

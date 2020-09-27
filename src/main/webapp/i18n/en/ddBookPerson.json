@@ -1,0 +1,46 @@
+{
+  "ftApp": {
+    "ddBookPerson": {
+      "home": {
+        "title": "Dd Book People",
+        "createLabel": "Create a new Dd Book Person",
+        "createOrEditLabel": "Create or edit a Dd Book Person",
+        "notFound": "No Dd Book People found"
+      },
+      "created": "A new Dd Book Person is created with identifier {{ param }}",
+      "updated": "A Dd Book Person is updated with identifier {{ param }}",
+      "deleted": "A Dd Book Person is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dd Book Person {{ id }}?"
+      },
+      "detail": {
+        "title": "Dd Book Person"
+      },
+      "unionid": "Unionid",
+      "remark": "Remark",
+      "userid": "Userid",
+      "isLeaderInDepts": "Is Leader In Depts",
+      "isBoss": "Is Boss",
+      "hiredDate": "Hired Date",
+      "isSenior": "Is Senior",
+      "tel": "Tel",
+      "department": "Department",
+      "email": "Email",
+      "workPlace": "Work Place",
+      "orderInDepts": "Order In Depts",
+      "mobile": "Mobile",
+      "errmsg": "Errmsg",
+      "active": "Active",
+      "avatar": "Avatar",
+      "isAdmin": "Is Admin",
+      "isHide": "Is Hide",
+      "jobnumber": "Jobnumber",
+      "name": "Name",
+      "extattr": "Extattr",
+      "stateCode": "State Code",
+      "position": "Position",
+      "roles": "Roles",
+      "ddBookDept": "Dd Book Dept"
+    }
+  }
+}

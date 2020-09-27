@@ -82,6 +82,13 @@ public class CacheConfiguration {
             createCache(cm, com.kyanite.ft.domain.User.class.getName(), jcacheConfiguration);
             createCache(cm, com.kyanite.ft.domain.Authority.class.getName(), jcacheConfiguration);
             createCache(cm, com.kyanite.ft.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".ddBookPeople", jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdBookPerson.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdBookPerson.class.getName() + ".ddBookDepts", jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.VFtUserSignInfo.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdUser.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.DdUser.class.getName() + ".ddBookDepts", jcacheConfiguration);
             // jhipster-needle-redis-add-entry
             createCache(cm,Constants.ACCESS_TOKEN,createConfig(Constants.ACCESS_TOKEN_SECONDS));//ACCESS_TOKEN_SECONDS
             createCache(cm,Constants.JSAPI_TICKET,createConfig(Constants.JSAPI_TICKET_CACHE_TIME));//ACCESS_TOKEN_SECONDS
