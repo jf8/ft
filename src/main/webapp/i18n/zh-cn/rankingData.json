@@ -1,0 +1,28 @@
+{
+  "ftApp": {
+    "rankingData": {
+      "home": {
+        "title": "Ranking Data",
+        "createLabel": "创建新 Ranking Data",
+        "createOrEditLabel": "创建或编辑 Ranking Data",
+        "notFound": "No Ranking Data found"
+      },
+      "created": "Ranking Data {{ param }} 创建成功",
+      "updated": "Ranking Data {{ param }} 更新成功",
+      "deleted": "Ranking Data {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Ranking Data {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Ranking Data"
+      },
+      "name": "Name",
+      "totalPeople": "Total People",
+      "signdPeople": "Signd People",
+      "attendance": "Attendance",
+      "orderNum": "Order Num",
+      "parentId": "Parent Id",
+      "liveSharing": "Live Sharing"
+    }
+  }
+}

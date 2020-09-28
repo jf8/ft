@@ -2,6 +2,22 @@
 
 
 
+entity LiveSharing{
+	name String,
+    day Instant
+}
+
+entity RankingData{
+	name String,
+  	totalPeople Long,
+    signdPeople Long,
+    attendance BigDecimal,
+    orderNum Long,
+    parentId Long
+}
+
+
+
 entity DdBookDept {
     name String,
   	orderNum  Long,
@@ -106,7 +122,8 @@ relationship ManyToMany {
 
 
 relationship OneToMany {
-   DdUser  to  DdBookDept
+   DdUser  to  DdBookDept,
+   LiveSharing to RankingData
 }
 
 

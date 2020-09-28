@@ -1,0 +1,28 @@
+{
+  "ftApp": {
+    "rankingData": {
+      "home": {
+        "title": "Ranking Data",
+        "createLabel": "Create a new Ranking Data",
+        "createOrEditLabel": "Create or edit a Ranking Data",
+        "notFound": "No Ranking Data found"
+      },
+      "created": "A new Ranking Data is created with identifier {{ param }}",
+      "updated": "A Ranking Data is updated with identifier {{ param }}",
+      "deleted": "A Ranking Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ranking Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Ranking Data"
+      },
+      "name": "Name",
+      "totalPeople": "Total People",
+      "signdPeople": "Signd People",
+      "attendance": "Attendance",
+      "orderNum": "Order Num",
+      "parentId": "Parent Id",
+      "liveSharing": "Live Sharing"
+    }
+  }
+}

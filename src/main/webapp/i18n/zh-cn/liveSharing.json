@@ -1,0 +1,24 @@
+{
+  "ftApp": {
+    "liveSharing": {
+      "home": {
+        "title": "Live Sharings",
+        "createLabel": "创建新 Live Sharing",
+        "createOrEditLabel": "创建或编辑 Live Sharing",
+        "notFound": "No Live Sharings found"
+      },
+      "created": "Live Sharing {{ param }} 创建成功",
+      "updated": "Live Sharing {{ param }} 更新成功",
+      "deleted": "Live Sharing {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Live Sharing {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Live Sharing"
+      },
+      "name": "Name",
+      "day": "Day",
+      "rankingData": "Ranking Data"
+    }
+  }
+}
