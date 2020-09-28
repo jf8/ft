@@ -1,0 +1,33 @@
+{
+  "name": "LiveSharing",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "day",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rankingData",
+      "otherEntityRelationshipName": "liveSharing",
+      "relationshipName": "rankingData"
+    }
+  ],
+  "changelogDate": "20200928085446",
+  "entityTableName": "live_sharing",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "ft"
+}

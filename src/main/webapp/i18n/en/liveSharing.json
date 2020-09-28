@@ -1,0 +1,24 @@
+{
+  "ftApp": {
+    "liveSharing": {
+      "home": {
+        "title": "Live Sharings",
+        "createLabel": "Create a new Live Sharing",
+        "createOrEditLabel": "Create or edit a Live Sharing",
+        "notFound": "No Live Sharings found"
+      },
+      "created": "A new Live Sharing is created with identifier {{ param }}",
+      "updated": "A Live Sharing is updated with identifier {{ param }}",
+      "deleted": "A Live Sharing is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Live Sharing {{ id }}?"
+      },
+      "detail": {
+        "title": "Live Sharing"
+      },
+      "name": "Name",
+      "day": "Day",
+      "rankingData": "Ranking Data"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "RankingData",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalPeople",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "signdPeople",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "attendance",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "parentId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "liveSharing",
+      "otherEntityRelationshipName": "rankingData",
+      "relationshipName": "liveSharing",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200928085546",
+  "entityTableName": "ranking_data",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "ft"
+}

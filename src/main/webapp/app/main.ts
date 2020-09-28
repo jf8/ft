@@ -34,6 +34,8 @@ import DdBookDeptService from '@/entities/dd-book-dept-ft/dd-book-dept-ft.servic
 import DdBookPersonService from '@/entities/dd-book-person-ft/dd-book-person-ft.service';
 import VFtUserSignInfoService from '@/entities/v-ft-user-sign-info-ft/v-ft-user-sign-info-ft.service';
 import DdUserService from '@/entities/dd-user-ft/dd-user-ft.service';
+import LiveSharingService from '@/entities/live-sharing-ft/live-sharing-ft.service';
+import RankingDataService from '@/entities/ranking-data-ft/ranking-data-ft.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 import 'element-ui/lib/theme-chalk/index.css'; //elemnt-ui样式文件
@@ -103,6 +105,8 @@ new Vue({
     ddBookPersonService: () => new DdBookPersonService(),
     vFtUserSignInfoService: () => new VFtUserSignInfoService(),
     ddUserService: () => new DdUserService(),
+    liveSharingService: () => new LiveSharingService(),
+    rankingDataService: () => new RankingDataService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

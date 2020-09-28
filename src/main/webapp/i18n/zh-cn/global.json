@@ -11,6 +11,8 @@
         "ddBookPersonFt": "Dd Book Person",
         "vFtUserSignInfoFt": "V Ft User Sign Info",
         "ddUserFt": "Dd User",
+        "liveSharingFt": "Live Sharing",
+        "rankingDataFt": "Ranking Data",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

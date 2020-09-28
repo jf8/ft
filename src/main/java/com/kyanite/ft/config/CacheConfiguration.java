@@ -89,6 +89,9 @@ public class CacheConfiguration {
             createCache(cm, com.kyanite.ft.domain.VFtUserSignInfo.class.getName(), jcacheConfiguration);
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName(), jcacheConfiguration);
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName() + ".ddBookDepts", jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.LiveSharing.class.getName(), jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.LiveSharing.class.getName() + ".rankingData", jcacheConfiguration);
+            createCache(cm, com.kyanite.ft.domain.RankingData.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
             createCache(cm,Constants.ACCESS_TOKEN,createConfig(Constants.ACCESS_TOKEN_SECONDS));//ACCESS_TOKEN_SECONDS
             createCache(cm,Constants.JSAPI_TICKET,createConfig(Constants.JSAPI_TICKET_CACHE_TIME));//ACCESS_TOKEN_SECONDS
