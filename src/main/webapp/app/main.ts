@@ -36,6 +36,7 @@ import VFtUserSignInfoService from '@/entities/v-ft-user-sign-info-ft/v-ft-user-
 import DdUserService from '@/entities/dd-user-ft/dd-user-ft.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
+import 'element-ui/lib/theme-chalk/index.css'; //elemnt-ui样式文件
 /* tslint:enable */
 Vue.config.productionTip = false;
 config.initVueApp(Vue);

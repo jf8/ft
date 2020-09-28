@@ -34,13 +34,13 @@ module.exports = merge(baseWebpackConfig, {
     proxy: [
       {
         context: ['/api', '/services', '/management', '/swagger-resources', '/v2/api-docs', '/h2-console', '/auth'],
-        target: 'http://127.0.0.1:8899/ft',
+        target: 'http://10.170.109.36:8899/ft',
         secure: false,
         headers: { host: 'localhost:9000' },
       },
       {
         context: ['/websocket'],
-        target: 'ws://127.0.0.1:8899/ft',
+        target: 'ws://10.170.109.36:8899/ft',
         ws: true,
       },
     ],
