@@ -84,6 +84,9 @@ public class DdBookDeptResourceIT {
     private static final String DEFAULT_EXT = "AAAAAAAAAA";
     private static final String UPDATED_EXT = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_LEAF = false;
+    private static final Boolean UPDATED_IS_LEAF = true;
+
     @Autowired
     private DdBookDeptRepository ddBookDeptRepository;
 
@@ -126,7 +129,8 @@ public class DdBookDeptResourceIT {
             .orgDeptOwner(DEFAULT_ORG_DEPT_OWNER)
             .deptManagerUseridList(DEFAULT_DEPT_MANAGER_USERID_LIST)
             .sourceIdentifier(DEFAULT_SOURCE_IDENTIFIER)
-            .ext(DEFAULT_EXT);
+            .ext(DEFAULT_EXT)
+            .isLeaf(DEFAULT_IS_LEAF);
         return ddBookDept;
     }
     /**
@@ -151,7 +155,8 @@ public class DdBookDeptResourceIT {
             .orgDeptOwner(UPDATED_ORG_DEPT_OWNER)
             .deptManagerUseridList(UPDATED_DEPT_MANAGER_USERID_LIST)
             .sourceIdentifier(UPDATED_SOURCE_IDENTIFIER)
-            .ext(UPDATED_EXT);
+            .ext(UPDATED_EXT)
+            .isLeaf(UPDATED_IS_LEAF);
         return ddBookDept;
     }
 
@@ -189,6 +194,7 @@ public class DdBookDeptResourceIT {
         assertThat(testDdBookDept.getDeptManagerUseridList()).isEqualTo(DEFAULT_DEPT_MANAGER_USERID_LIST);
         assertThat(testDdBookDept.getSourceIdentifier()).isEqualTo(DEFAULT_SOURCE_IDENTIFIER);
         assertThat(testDdBookDept.getExt()).isEqualTo(DEFAULT_EXT);
+        assertThat(testDdBookDept.isIsLeaf()).isEqualTo(DEFAULT_IS_LEAF);
     }
 
     @Test
@@ -236,7 +242,8 @@ public class DdBookDeptResourceIT {
             .andExpect(jsonPath("$.[*].orgDeptOwner").value(hasItem(DEFAULT_ORG_DEPT_OWNER)))
             .andExpect(jsonPath("$.[*].deptManagerUseridList").value(hasItem(DEFAULT_DEPT_MANAGER_USERID_LIST)))
             .andExpect(jsonPath("$.[*].sourceIdentifier").value(hasItem(DEFAULT_SOURCE_IDENTIFIER)))
-            .andExpect(jsonPath("$.[*].ext").value(hasItem(DEFAULT_EXT)));
+            .andExpect(jsonPath("$.[*].ext").value(hasItem(DEFAULT_EXT)))
+            .andExpect(jsonPath("$.[*].isLeaf").value(hasItem(DEFAULT_IS_LEAF.booleanValue())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -284,7 +291,8 @@ public class DdBookDeptResourceIT {
             .andExpect(jsonPath("$.orgDeptOwner").value(DEFAULT_ORG_DEPT_OWNER))
             .andExpect(jsonPath("$.deptManagerUseridList").value(DEFAULT_DEPT_MANAGER_USERID_LIST))
             .andExpect(jsonPath("$.sourceIdentifier").value(DEFAULT_SOURCE_IDENTIFIER))
-            .andExpect(jsonPath("$.ext").value(DEFAULT_EXT));
+            .andExpect(jsonPath("$.ext").value(DEFAULT_EXT))
+            .andExpect(jsonPath("$.isLeaf").value(DEFAULT_IS_LEAF.booleanValue()));
     }
     @Test
     @Transactional
@@ -321,7 +329,8 @@ public class DdBookDeptResourceIT {
             .orgDeptOwner(UPDATED_ORG_DEPT_OWNER)
             .deptManagerUseridList(UPDATED_DEPT_MANAGER_USERID_LIST)
             .sourceIdentifier(UPDATED_SOURCE_IDENTIFIER)
-            .ext(UPDATED_EXT);
+            .ext(UPDATED_EXT)
+            .isLeaf(UPDATED_IS_LEAF);
 
         restDdBookDeptMockMvc.perform(put("/api/dd-book-depts")
             .contentType(MediaType.APPLICATION_JSON)
@@ -347,6 +356,7 @@ public class DdBookDeptResourceIT {
         assertThat(testDdBookDept.getDeptManagerUseridList()).isEqualTo(UPDATED_DEPT_MANAGER_USERID_LIST);
         assertThat(testDdBookDept.getSourceIdentifier()).isEqualTo(UPDATED_SOURCE_IDENTIFIER);
         assertThat(testDdBookDept.getExt()).isEqualTo(UPDATED_EXT);
+        assertThat(testDdBookDept.isIsLeaf()).isEqualTo(UPDATED_IS_LEAF);
     }
 
     @Test

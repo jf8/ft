@@ -40,6 +40,7 @@
                     <th v-on:click="changeOrder('deptManagerUseridList')"><span v-text="$t('ftApp.ddBookDept.deptManagerUseridList')">Dept Manager Userid List</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'deptManagerUseridList'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('sourceIdentifier')"><span v-text="$t('ftApp.ddBookDept.sourceIdentifier')">Source Identifier</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'sourceIdentifier'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('ext')"><span v-text="$t('ftApp.ddBookDept.ext')">Ext</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'ext'"></jhi-sort-indicator></th>
+                    <th v-on:click="changeOrder('isLeaf')"><span v-text="$t('ftApp.ddBookDept.isLeaf')">Is Leaf</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'isLeaf'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('parent.id')"><span v-text="$t('ftApp.ddBookDept.parent')">Parent</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'parent.id'"></jhi-sort-indicator></th>
                     <th></th>
                 </tr>
@@ -65,6 +66,7 @@
                     <td>{{ddBookDept.deptManagerUseridList}}</td>
                     <td>{{ddBookDept.sourceIdentifier}}</td>
                     <td>{{ddBookDept.ext}}</td>
+                    <td>{{ddBookDept.isLeaf}}</td>
                     <td>
                         <div v-if="ddBookDept.parent">
                             <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: ddBookDept.parent.id}}">{{ddBookDept.parent.id}}</router-link>

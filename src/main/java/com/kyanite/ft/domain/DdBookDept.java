@@ -70,6 +70,9 @@ public class DdBookDept implements Serializable {
     @Column(name = "ext")
     private String ext;
 
+    @Column(name = "is_leaf")
+    private Boolean isLeaf;
+
     @OneToMany(mappedBy = "parent")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<DdBookDept> children = new HashSet<>();
@@ -294,6 +297,19 @@ public class DdBookDept implements Serializable {
         this.ext = ext;
     }
 
+    public Boolean isIsLeaf() {
+        return isLeaf;
+    }
+
+    public DdBookDept isLeaf(Boolean isLeaf) {
+        this.isLeaf = isLeaf;
+        return this;
+    }
+
+    public void setIsLeaf(Boolean isLeaf) {
+        this.isLeaf = isLeaf;
+    }
+
     public Set<DdBookDept> getChildren() {
         return children;
     }
@@ -419,6 +435,7 @@ public class DdBookDept implements Serializable {
             ", deptManagerUseridList='" + getDeptManagerUseridList() + "'" +
             ", sourceIdentifier='" + getSourceIdentifier() + "'" +
             ", ext='" + getExt() + "'" +
+            ", isLeaf='" + isIsLeaf() + "'" +
             "}";
     }
 }

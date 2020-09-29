@@ -35,7 +35,8 @@ entity DdBookDept {
     orgDeptOwner String,
     deptManagerUseridList String,
     sourceIdentifier String,
-    ext String
+    ext String,
+    isLeaf Boolean
 }
 
 entity DdBookPerson {

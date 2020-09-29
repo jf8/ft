@@ -46,7 +46,8 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA'
+        'AAAAAAA',
+        false
       );
     });
 
@@ -114,6 +115,7 @@ describe('Service Tests', () => {
             deptManagerUseridList: 'BBBBBB',
             sourceIdentifier: 'BBBBBB',
             ext: 'BBBBBB',
+            isLeaf: true,
           },
           elemDefault
         );
@@ -155,6 +157,7 @@ describe('Service Tests', () => {
             deptManagerUseridList: 'BBBBBB',
             sourceIdentifier: 'BBBBBB',
             ext: 'BBBBBB',
+            isLeaf: true,
           },
           elemDefault
         );
