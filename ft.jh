@@ -124,7 +124,7 @@ relationship ManyToMany {
 
 relationship OneToMany {
    LiveSharing to RankingData,
-   DdBookDept to DdBookDept
+   DdBookDept{children} to DdBookDept{parent}
 }
 
 
