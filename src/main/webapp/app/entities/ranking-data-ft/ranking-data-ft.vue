@@ -31,6 +31,7 @@
                     <th v-on:click="changeOrder('attendance')"><span v-text="$t('ftApp.rankingData.attendance')">Attendance</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'attendance'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('orderNum')"><span v-text="$t('ftApp.rankingData.orderNum')">Order Num</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'orderNum'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('parentId')"><span v-text="$t('ftApp.rankingData.parentId')">Parent Id</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'parentId'"></jhi-sort-indicator></th>
+                    <th v-on:click="changeOrder('day')"><span v-text="$t('ftApp.rankingData.day')">Day</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'day'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('liveSharing.id')"><span v-text="$t('ftApp.rankingData.liveSharing')">Live Sharing</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'liveSharing.id'"></jhi-sort-indicator></th>
                     <th></th>
                 </tr>
@@ -47,6 +48,7 @@
                     <td>{{rankingData.attendance}}</td>
                     <td>{{rankingData.orderNum}}</td>
                     <td>{{rankingData.parentId}}</td>
+                    <td>{{rankingData.day ? $d(Date.parse(rankingData.day), 'short') : ''}}</td>
                     <td>
                         <div v-if="rankingData.liveSharing">
                             <router-link :to="{name: 'LiveSharingFtView', params: {liveSharingId: rankingData.liveSharing.id}}">{{rankingData.liveSharing.id}}</router-link>

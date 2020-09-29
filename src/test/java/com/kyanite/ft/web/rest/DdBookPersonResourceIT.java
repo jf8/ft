@@ -108,6 +108,9 @@ public class DdBookPersonResourceIT {
     private static final String DEFAULT_ROLES = "AAAAAAAAAA";
     private static final String UPDATED_ROLES = "BBBBBBBBBB";
 
+    private static final String DEFAULT_PARENT_DEPTS_ID_LIST = "AAAAAAAAAA";
+    private static final String UPDATED_PARENT_DEPTS_ID_LIST = "BBBBBBBBBB";
+
     @Autowired
     private DdBookPersonRepository ddBookPersonRepository;
 
@@ -153,7 +156,8 @@ public class DdBookPersonResourceIT {
             .extattr(DEFAULT_EXTATTR)
             .stateCode(DEFAULT_STATE_CODE)
             .position(DEFAULT_POSITION)
-            .roles(DEFAULT_ROLES);
+            .roles(DEFAULT_ROLES)
+            .parentDeptsIdList(DEFAULT_PARENT_DEPTS_ID_LIST);
         return ddBookPerson;
     }
     /**
@@ -187,7 +191,8 @@ public class DdBookPersonResourceIT {
             .extattr(UPDATED_EXTATTR)
             .stateCode(UPDATED_STATE_CODE)
             .position(UPDATED_POSITION)
-            .roles(UPDATED_ROLES);
+            .roles(UPDATED_ROLES)
+            .parentDeptsIdList(UPDATED_PARENT_DEPTS_ID_LIST);
         return ddBookPerson;
     }
 
@@ -234,6 +239,7 @@ public class DdBookPersonResourceIT {
         assertThat(testDdBookPerson.getStateCode()).isEqualTo(DEFAULT_STATE_CODE);
         assertThat(testDdBookPerson.getPosition()).isEqualTo(DEFAULT_POSITION);
         assertThat(testDdBookPerson.getRoles()).isEqualTo(DEFAULT_ROLES);
+        assertThat(testDdBookPerson.getParentDeptsIdList()).isEqualTo(DEFAULT_PARENT_DEPTS_ID_LIST);
     }
 
     @Test
@@ -290,7 +296,8 @@ public class DdBookPersonResourceIT {
             .andExpect(jsonPath("$.[*].extattr").value(hasItem(DEFAULT_EXTATTR)))
             .andExpect(jsonPath("$.[*].stateCode").value(hasItem(DEFAULT_STATE_CODE)))
             .andExpect(jsonPath("$.[*].position").value(hasItem(DEFAULT_POSITION)))
-            .andExpect(jsonPath("$.[*].roles").value(hasItem(DEFAULT_ROLES)));
+            .andExpect(jsonPath("$.[*].roles").value(hasItem(DEFAULT_ROLES)))
+            .andExpect(jsonPath("$.[*].parentDeptsIdList").value(hasItem(DEFAULT_PARENT_DEPTS_ID_LIST)));
     }
     
     @Test
@@ -327,7 +334,8 @@ public class DdBookPersonResourceIT {
             .andExpect(jsonPath("$.extattr").value(DEFAULT_EXTATTR))
             .andExpect(jsonPath("$.stateCode").value(DEFAULT_STATE_CODE))
             .andExpect(jsonPath("$.position").value(DEFAULT_POSITION))
-            .andExpect(jsonPath("$.roles").value(DEFAULT_ROLES));
+            .andExpect(jsonPath("$.roles").value(DEFAULT_ROLES))
+            .andExpect(jsonPath("$.parentDeptsIdList").value(DEFAULT_PARENT_DEPTS_ID_LIST));
     }
     @Test
     @Transactional
@@ -373,7 +381,8 @@ public class DdBookPersonResourceIT {
             .extattr(UPDATED_EXTATTR)
             .stateCode(UPDATED_STATE_CODE)
             .position(UPDATED_POSITION)
-            .roles(UPDATED_ROLES);
+            .roles(UPDATED_ROLES)
+            .parentDeptsIdList(UPDATED_PARENT_DEPTS_ID_LIST);
 
         restDdBookPersonMockMvc.perform(put("/api/dd-book-people")
             .contentType(MediaType.APPLICATION_JSON)
@@ -408,6 +417,7 @@ public class DdBookPersonResourceIT {
         assertThat(testDdBookPerson.getStateCode()).isEqualTo(UPDATED_STATE_CODE);
         assertThat(testDdBookPerson.getPosition()).isEqualTo(UPDATED_POSITION);
         assertThat(testDdBookPerson.getRoles()).isEqualTo(UPDATED_ROLES);
+        assertThat(testDdBookPerson.getParentDeptsIdList()).isEqualTo(UPDATED_PARENT_DEPTS_ID_LIST);
     }
 
     @Test

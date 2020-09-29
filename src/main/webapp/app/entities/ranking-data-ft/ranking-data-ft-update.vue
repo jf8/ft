@@ -40,6 +40,15 @@
                             :class="{'valid': !$v.rankingData.parentId.$invalid, 'invalid': $v.rankingData.parentId.$invalid }" v-model.number="$v.rankingData.parentId.$model" />
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.rankingData.day')" for="ranking-data-ft-day">Day</label>
+                        <div class="d-flex">
+                            <input id="ranking-data-ft-day" type="datetime-local" class="form-control" name="day" :class="{'valid': !$v.rankingData.day.$invalid, 'invalid': $v.rankingData.day.$invalid }"
+                            
+                            :value="convertDateTimeFromServer($v.rankingData.day.$model)"
+                            @change="updateInstantField('day', $event)"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label" v-text="$t('ftApp.rankingData.liveSharing')" for="ranking-data-ft-liveSharing">Live Sharing</label>
                         <select class="form-control" id="ranking-data-ft-liveSharing" name="liveSharing" v-model="rankingData.liveSharing">
                             <option v-bind:value="null"></option>

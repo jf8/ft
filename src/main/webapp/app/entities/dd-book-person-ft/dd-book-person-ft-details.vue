@@ -148,6 +148,12 @@
                     <dd>
                         <span>{{ddBookPerson.roles}}</span>
                     </dd>
+                    <dt>
+                        <span v-text="$t('ftApp.ddBookPerson.parentDeptsIdList')">Parent Depts Id List</span>
+                    </dt>
+                    <dd>
+                        <span>{{ddBookPerson.parentDeptsIdList}}</span>
+                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

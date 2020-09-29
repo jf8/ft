@@ -1,8 +1,9 @@
 /* tslint:disable max-line-length */
 import axios from 'axios';
+import { format } from 'date-fns';
 
 import * as config from '@/shared/config/config';
-import {} from '@/shared/date/filters';
+import { DATE_TIME_FORMAT } from '@/shared/date/filters';
 import RankingDataFtService from '@/entities/ranking-data-ft/ranking-data-ft.service';
 import { RankingDataFt } from '@/shared/model/ranking-data-ft.model';
 
@@ -27,15 +28,22 @@ describe('Service Tests', () => {
   describe('RankingDataFt Service', () => {
     let service: RankingDataFtService;
     let elemDefault;
+    let currentDate: Date;
     beforeEach(() => {
       service = new RankingDataFtService();
+      currentDate = new Date();
 
-      elemDefault = new RankingDataFt(0, 'AAAAAAA', 0, 0, 0, 0, 0);
+      elemDefault = new RankingDataFt(0, 'AAAAAAA', 0, 0, 0, 0, 0, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', async () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            day: format(currentDate, DATE_TIME_FORMAT),
+          },
+          elemDefault
+        );
         mockedAxios.get.mockReturnValue(Promise.resolve({ data: returnedFromService }));
 
         return service.find(123).then(res => {
@@ -57,10 +65,16 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            day: format(currentDate, DATE_TIME_FORMAT),
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            day: currentDate,
+          },
+          returnedFromService
+        );
 
         mockedAxios.post.mockReturnValue(Promise.resolve({ data: returnedFromService }));
         return service.create({}).then(res => {
@@ -88,11 +102,17 @@ describe('Service Tests', () => {
             attendance: 1,
             orderNum: 1,
             parentId: 1,
+            day: format(currentDate, DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            day: currentDate,
+          },
+          returnedFromService
+        );
         mockedAxios.put.mockReturnValue(Promise.resolve({ data: returnedFromService }));
 
         return service.update(expected).then(res => {
@@ -120,10 +140,16 @@ describe('Service Tests', () => {
             attendance: 1,
             orderNum: 1,
             parentId: 1,
+            day: format(currentDate, DATE_TIME_FORMAT),
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            day: currentDate,
+          },
+          returnedFromService
+        );
         mockedAxios.get.mockReturnValue(Promise.resolve([returnedFromService]));
         return service.retrieve({ sort: {}, page: 0, size: 10 }).then(res => {
           expect(res).toContainEqual(expected);

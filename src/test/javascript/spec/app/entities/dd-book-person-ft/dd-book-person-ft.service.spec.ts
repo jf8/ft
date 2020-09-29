@@ -55,6 +55,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
+        'AAAAAAA',
         'AAAAAAA'
       );
     });
@@ -132,6 +133,7 @@ describe('Service Tests', () => {
             stateCode: 'BBBBBB',
             position: 'BBBBBB',
             roles: 'BBBBBB',
+            parentDeptsIdList: 'BBBBBB',
           },
           elemDefault
         );
@@ -182,6 +184,7 @@ describe('Service Tests', () => {
             stateCode: 'BBBBBB',
             position: 'BBBBBB',
             roles: 'BBBBBB',
+            parentDeptsIdList: 'BBBBBB',
           },
           elemDefault
         );

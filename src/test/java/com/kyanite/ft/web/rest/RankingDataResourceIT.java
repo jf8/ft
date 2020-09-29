@@ -20,6 +20,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,6 +56,9 @@ public class RankingDataResourceIT {
     private static final Long DEFAULT_PARENT_ID = 1L;
     private static final Long UPDATED_PARENT_ID = 2L;
 
+    private static final Instant DEFAULT_DAY = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DAY = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private RankingDataRepository rankingDataRepository;
 
@@ -81,7 +86,8 @@ public class RankingDataResourceIT {
             .signdPeople(DEFAULT_SIGND_PEOPLE)
             .attendance(DEFAULT_ATTENDANCE)
             .orderNum(DEFAULT_ORDER_NUM)
-            .parentId(DEFAULT_PARENT_ID);
+            .parentId(DEFAULT_PARENT_ID)
+            .day(DEFAULT_DAY);
         return rankingData;
     }
     /**
@@ -97,7 +103,8 @@ public class RankingDataResourceIT {
             .signdPeople(UPDATED_SIGND_PEOPLE)
             .attendance(UPDATED_ATTENDANCE)
             .orderNum(UPDATED_ORDER_NUM)
-            .parentId(UPDATED_PARENT_ID);
+            .parentId(UPDATED_PARENT_ID)
+            .day(UPDATED_DAY);
         return rankingData;
     }
 
@@ -126,6 +133,7 @@ public class RankingDataResourceIT {
         assertThat(testRankingData.getAttendance()).isEqualTo(DEFAULT_ATTENDANCE);
         assertThat(testRankingData.getOrderNum()).isEqualTo(DEFAULT_ORDER_NUM);
         assertThat(testRankingData.getParentId()).isEqualTo(DEFAULT_PARENT_ID);
+        assertThat(testRankingData.getDay()).isEqualTo(DEFAULT_DAY);
     }
 
     @Test
@@ -164,7 +172,8 @@ public class RankingDataResourceIT {
             .andExpect(jsonPath("$.[*].signdPeople").value(hasItem(DEFAULT_SIGND_PEOPLE.intValue())))
             .andExpect(jsonPath("$.[*].attendance").value(hasItem(DEFAULT_ATTENDANCE.intValue())))
             .andExpect(jsonPath("$.[*].orderNum").value(hasItem(DEFAULT_ORDER_NUM.intValue())))
-            .andExpect(jsonPath("$.[*].parentId").value(hasItem(DEFAULT_PARENT_ID.intValue())));
+            .andExpect(jsonPath("$.[*].parentId").value(hasItem(DEFAULT_PARENT_ID.intValue())))
+            .andExpect(jsonPath("$.[*].day").value(hasItem(DEFAULT_DAY.toString())));
     }
     
     @Test
@@ -183,7 +192,8 @@ public class RankingDataResourceIT {
             .andExpect(jsonPath("$.signdPeople").value(DEFAULT_SIGND_PEOPLE.intValue()))
             .andExpect(jsonPath("$.attendance").value(DEFAULT_ATTENDANCE.intValue()))
             .andExpect(jsonPath("$.orderNum").value(DEFAULT_ORDER_NUM.intValue()))
-            .andExpect(jsonPath("$.parentId").value(DEFAULT_PARENT_ID.intValue()));
+            .andExpect(jsonPath("$.parentId").value(DEFAULT_PARENT_ID.intValue()))
+            .andExpect(jsonPath("$.day").value(DEFAULT_DAY.toString()));
     }
     @Test
     @Transactional
@@ -211,7 +221,8 @@ public class RankingDataResourceIT {
             .signdPeople(UPDATED_SIGND_PEOPLE)
             .attendance(UPDATED_ATTENDANCE)
             .orderNum(UPDATED_ORDER_NUM)
-            .parentId(UPDATED_PARENT_ID);
+            .parentId(UPDATED_PARENT_ID)
+            .day(UPDATED_DAY);
 
         restRankingDataMockMvc.perform(put("/api/ranking-data")
             .contentType(MediaType.APPLICATION_JSON)
@@ -228,6 +239,7 @@ public class RankingDataResourceIT {
         assertThat(testRankingData.getAttendance()).isEqualTo(UPDATED_ATTENDANCE);
         assertThat(testRankingData.getOrderNum()).isEqualTo(UPDATED_ORDER_NUM);
         assertThat(testRankingData.getParentId()).isEqualTo(UPDATED_PARENT_ID);
+        assertThat(testRankingData.getDay()).isEqualTo(UPDATED_DAY);
     }
 
     @Test
