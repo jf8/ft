@@ -103,11 +103,11 @@
                         </span>
                     </dd>
                     <dt>
-                        <span v-text="$t('ftApp.ddBookDept.ddBookDept')">Dd Book Dept</span>
+                        <span v-text="$t('ftApp.ddBookDept.parent')">Parent</span>
                     </dt>
                     <dd>
-                        <div v-if="ddBookDept.ddBookDept">
-                            <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: ddBookDept.ddBookDept.id}}">{{ddBookDept.ddBookDept.id}}</router-link>
+                        <div v-if="ddBookDept.parent">
+                            <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: ddBookDept.parent.id}}">{{ddBookDept.parent.id}}</router-link>
                         </div>
                     </dd>
                 </dl>

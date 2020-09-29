@@ -91,10 +91,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label" v-text="$t('ftApp.ddBookDept.ddBookDept')" for="dd-book-dept-ft-ddBookDept">Dd Book Dept</label>
-                        <select class="form-control" id="dd-book-dept-ft-ddBookDept" name="ddBookDept" v-model="ddBookDept.ddBookDept">
+                        <label class="form-control-label" v-text="$t('ftApp.ddBookDept.parent')" for="dd-book-dept-ft-parent">Parent</label>
+                        <select class="form-control" id="dd-book-dept-ft-parent" name="parent" v-model="ddBookDept.parent">
                             <option v-bind:value="null"></option>
-                            <option v-bind:value="ddBookDept.ddBookDept && ddBookDeptOption.id === ddBookDept.ddBookDept.id ? ddBookDept.ddBookDept : ddBookDeptOption" v-for="ddBookDeptOption in ddBookDepts" :key="ddBookDeptOption.id">{{ddBookDeptOption.id}}</option>
+                            <option v-bind:value="ddBookDept.parent && ddBookDeptOption.id === ddBookDept.parent.id ? ddBookDept.parent : ddBookDeptOption" v-for="ddBookDeptOption in ddBookDepts" :key="ddBookDeptOption.id">{{ddBookDeptOption.id}}</option>
                         </select>
                     </div>
                 </div>

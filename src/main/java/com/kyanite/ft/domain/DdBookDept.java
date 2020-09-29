@@ -70,9 +70,9 @@ public class DdBookDept implements Serializable {
     @Column(name = "ext")
     private String ext;
 
-    @OneToMany(mappedBy = "ddBookDept")
+    @OneToMany(mappedBy = "parent")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<DdBookDept> ddBookDepts = new HashSet<>();
+    private Set<DdBookDept> children = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -82,8 +82,8 @@ public class DdBookDept implements Serializable {
     private Set<DdBookPerson> ddBookPeople = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "ddBookDepts", allowSetters = true)
-    private DdBookDept ddBookDept;
+    @JsonIgnoreProperties(value = "children", allowSetters = true)
+    private DdBookDept parent;
 
     @ManyToMany(mappedBy = "ddBookDepts")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -294,29 +294,29 @@ public class DdBookDept implements Serializable {
         this.ext = ext;
     }
 
-    public Set<DdBookDept> getDdBookDepts() {
-        return ddBookDepts;
+    public Set<DdBookDept> getChildren() {
+        return children;
     }
 
-    public DdBookDept ddBookDepts(Set<DdBookDept> ddBookDepts) {
-        this.ddBookDepts = ddBookDepts;
+    public DdBookDept children(Set<DdBookDept> ddBookDepts) {
+        this.children = ddBookDepts;
         return this;
     }
 
-    public DdBookDept addDdBookDept(DdBookDept ddBookDept) {
-        this.ddBookDepts.add(ddBookDept);
-        ddBookDept.setDdBookDept(this);
+    public DdBookDept addChildren(DdBookDept ddBookDept) {
+        this.children.add(ddBookDept);
+        ddBookDept.setParent(this);
         return this;
     }
 
-    public DdBookDept removeDdBookDept(DdBookDept ddBookDept) {
-        this.ddBookDepts.remove(ddBookDept);
-        ddBookDept.setDdBookDept(null);
+    public DdBookDept removeChildren(DdBookDept ddBookDept) {
+        this.children.remove(ddBookDept);
+        ddBookDept.setParent(null);
         return this;
     }
 
-    public void setDdBookDepts(Set<DdBookDept> ddBookDepts) {
-        this.ddBookDepts = ddBookDepts;
+    public void setChildren(Set<DdBookDept> ddBookDepts) {
+        this.children = ddBookDepts;
     }
 
     public Set<DdBookPerson> getDdBookPeople() {
@@ -344,17 +344,17 @@ public class DdBookDept implements Serializable {
         this.ddBookPeople = ddBookPeople;
     }
 
-    public DdBookDept getDdBookDept() {
-        return ddBookDept;
+    public DdBookDept getParent() {
+        return parent;
     }
 
-    public DdBookDept ddBookDept(DdBookDept ddBookDept) {
-        this.ddBookDept = ddBookDept;
+    public DdBookDept parent(DdBookDept ddBookDept) {
+        this.parent = ddBookDept;
         return this;
     }
 
-    public void setDdBookDept(DdBookDept ddBookDept) {
-        this.ddBookDept = ddBookDept;
+    public void setParent(DdBookDept ddBookDept) {
+        this.parent = ddBookDept;
     }
 
     public Set<DdUser> getDdUsers() {
