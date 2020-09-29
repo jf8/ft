@@ -117,13 +117,14 @@ entity DdUser {
 
 
 relationship ManyToMany {
-    DdBookDept to  DdBookPerson
+    DdBookDept to  DdBookPerson,
+    DdUser  to  DdBookDept
 }
 
 
 relationship OneToMany {
-   DdUser  to  DdBookDept,
-   LiveSharing to RankingData
+   LiveSharing to RankingData,
+   DdBookDept to DdBookDept
 }
 
 
