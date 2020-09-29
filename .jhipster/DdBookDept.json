@@ -66,8 +66,8 @@
     {
       "relationshipType": "one-to-many",
       "otherEntityName": "ddBookDept",
-      "otherEntityRelationshipName": "ddBookDept",
-      "relationshipName": "ddBookDept"
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "children"
     },
     {
       "relationshipType": "many-to-many",
@@ -80,8 +80,8 @@
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "ddBookDept",
-      "otherEntityRelationshipName": "ddBookDept",
-      "relationshipName": "ddBookDept",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parent",
       "otherEntityField": "id"
     },
     {

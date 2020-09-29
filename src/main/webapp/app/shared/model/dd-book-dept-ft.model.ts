@@ -19,9 +19,9 @@ export interface IDdBookDeptFt {
   deptManagerUseridList?: string;
   sourceIdentifier?: string;
   ext?: string;
-  ddBookDepts?: IDdBookDeptFt[];
+  children?: IDdBookDeptFt[];
   ddBookPeople?: IDdBookPersonFt[];
-  ddBookDept?: IDdBookDeptFt;
+  parent?: IDdBookDeptFt;
   ddUsers?: IDdUserFt[];
 }
 
@@ -43,9 +43,9 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     public deptManagerUseridList?: string,
     public sourceIdentifier?: string,
     public ext?: string,
-    public ddBookDepts?: IDdBookDeptFt[],
+    public children?: IDdBookDeptFt[],
     public ddBookPeople?: IDdBookPersonFt[],
-    public ddBookDept?: IDdBookDeptFt,
+    public parent?: IDdBookDeptFt,
     public ddUsers?: IDdUserFt[]
   ) {
     this.createDeptGroup = this.createDeptGroup || false;
