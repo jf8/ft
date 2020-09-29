@@ -22,6 +22,7 @@ const validations: any = {
     orderNum: {},
     parentId: {},
     day: {},
+    isLeaf: {},
   },
 };
 

@@ -45,6 +45,9 @@ public class RankingData implements Serializable {
     @Column(name = "day")
     private Instant day;
 
+    @Column(name = "is_leaf")
+    private Boolean isLeaf;
+
     @ManyToOne
     @JsonIgnoreProperties(value = "rankingData", allowSetters = true)
     private LiveSharing liveSharing;
@@ -149,6 +152,19 @@ public class RankingData implements Serializable {
         this.day = day;
     }
 
+    public Boolean isIsLeaf() {
+        return isLeaf;
+    }
+
+    public RankingData isLeaf(Boolean isLeaf) {
+        this.isLeaf = isLeaf;
+        return this;
+    }
+
+    public void setIsLeaf(Boolean isLeaf) {
+        this.isLeaf = isLeaf;
+    }
+
     public LiveSharing getLiveSharing() {
         return liveSharing;
     }
@@ -191,6 +207,7 @@ public class RankingData implements Serializable {
             ", orderNum=" + getOrderNum() +
             ", parentId=" + getParentId() +
             ", day='" + getDay() + "'" +
+            ", isLeaf='" + isIsLeaf() + "'" +
             "}";
     }
 }

@@ -33,7 +33,7 @@ describe('Service Tests', () => {
       service = new RankingDataFtService();
       currentDate = new Date();
 
-      elemDefault = new RankingDataFt(0, 'AAAAAAA', 0, 0, 0, 0, 0, currentDate);
+      elemDefault = new RankingDataFt(0, 'AAAAAAA', 0, 0, 0, 0, 0, currentDate, false);
     });
 
     describe('Service methods', () => {
@@ -103,6 +103,7 @@ describe('Service Tests', () => {
             orderNum: 1,
             parentId: 1,
             day: format(currentDate, DATE_TIME_FORMAT),
+            isLeaf: true,
           },
           elemDefault
         );
@@ -141,6 +142,7 @@ describe('Service Tests', () => {
             orderNum: 1,
             parentId: 1,
             day: format(currentDate, DATE_TIME_FORMAT),
+            isLeaf: true,
           },
           elemDefault
         );

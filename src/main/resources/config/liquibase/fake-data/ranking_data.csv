@@ -1,11 +1,11 @@
-id;name;total_people;signd_people;attendance;order_num;parent_id;day
-1;Montana impactful Florida;18326;28109;9011;70802;2379;2020-09-28T04:54:50
-2;Money Market Account pink Unbranded Fresh Ball;81791;47004;13666;3406;70115;2020-09-27T12:52:44
-3;transmit firmware Principal;68844;7273;81247;36073;73253;2020-09-27T11:33:28
-4;time-frame Ergonomic open-source;10259;66125;76879;19724;27083;2020-09-27T22:53:50
-5;Web;6725;9407;18774;86127;88992;2020-09-27T19:13:53
-6;Pizza;54780;31782;43987;88281;85221;2020-09-27T15:18:18
-7;Credit Card Account;16558;80244;24367;51586;23416;2020-09-28T00:43:56
-8;Specialist;97451;79537;49509;4442;58868;2020-09-27T22:35:45
-9;Granite Gorgeous Concrete Shirt;91967;6195;89609;72989;78368;2020-09-27T18:02:42
-10;Implementation Consultant back-end;12361;43480;9803;97425;98492;2020-09-28T07:58:01
+id;name;total_people;signd_people;attendance;order_num;parent_id;day;is_leaf
+1;Montana impactful Florida;18326;28109;9011;70802;2379;2020-09-28T04:54:50;true
+2;architect algorithm;90379;88122;26185;81791;47004;2020-09-28T05:38:56;false
+3;synthesizing transmit firmware;91925;97890;68844;7273;81247;2020-09-28T00:16:18;true
+4;Director Brand Licensed Concrete Computer;66125;76879;19724;27083;41799;2020-09-28T07:12:28;true
+5;Ergonomic Concrete Pizza Customer;1612;17975;83671;54780;31782;2020-09-27T22:22:19;true
+6;port Credit Card Account Bacon;24367;51586;23416;34154;20057;2020-09-27T09:41:11;false
+7;online Generic Cotton Tuna Granite;3721;28150;25842;41600;91967;2020-09-28T07:26:32;true
+8;bluetooth Usability silver;77424;36009;53187;12361;43480;2020-09-28T06:34:34;true
+9;Practical Soft Chips Refined Bike;16080;85218;14115;17895;17639;2020-09-28T00:23:10;false
+10;solid state AI;76400;50962;31882;13438;7112;2020-09-28T04:52:03;false
