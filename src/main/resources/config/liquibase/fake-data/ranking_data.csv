@@ -1,11 +1,11 @@
-id;name;total_people;signd_people;attendance;order_num;parent_id
-1;Montana impactful Florida;18326;28109;9011;70802;2379
-2;Orchestrator;37136;21721;32807;3723;90379
-3;secondary Crest Clothing;83543;79455;76242;82266;31625
-4;Principal;68844;7273;81247;36073;73253
-5;Director Brand Licensed Concrete Computer;66125;76879;19724;27083;41799
-6;Web;6725;9407;18774;86127;88992
-7;Games connecting;31782;43987;88281;85221;73434
-8;Credit Card Account;16558;80244;24367;51586;23416
-9;silver utilisation;79537;49509;4442;58868;43055
-10;Granite Gorgeous Concrete Shirt;91967;6195;89609;72989;78368
+id;name;total_people;signd_people;attendance;order_num;parent_id;day
+1;Montana impactful Florida;18326;28109;9011;70802;2379;2020-09-28T04:54:50
+2;Money Market Account pink Unbranded Fresh Ball;81791;47004;13666;3406;70115;2020-09-27T12:52:44
+3;transmit firmware Principal;68844;7273;81247;36073;73253;2020-09-27T11:33:28
+4;time-frame Ergonomic open-source;10259;66125;76879;19724;27083;2020-09-27T22:53:50
+5;Web;6725;9407;18774;86127;88992;2020-09-27T19:13:53
+6;Pizza;54780;31782;43987;88281;85221;2020-09-27T15:18:18
+7;Credit Card Account;16558;80244;24367;51586;23416;2020-09-28T00:43:56
+8;Specialist;97451;79537;49509;4442;58868;2020-09-27T22:35:45
+9;Granite Gorgeous Concrete Shirt;91967;6195;89609;72989;78368;2020-09-27T18:02:42
+10;Implementation Consultant back-end;12361;43480;9803;97425;98492;2020-09-28T07:58:01

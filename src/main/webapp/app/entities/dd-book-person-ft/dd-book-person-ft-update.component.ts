@@ -35,6 +35,7 @@ const validations: any = {
     stateCode: {},
     position: {},
     roles: {},
+    parentDeptsIdList: {},
   },
 };
 

@@ -129,6 +129,11 @@
                         <input type="text" class="form-control" name="roles" id="dd-book-person-ft-roles"
                             :class="{'valid': !$v.ddBookPerson.roles.$invalid, 'invalid': $v.ddBookPerson.roles.$invalid }" v-model="$v.ddBookPerson.roles.$model" />
                     </div>
+                    <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.ddBookPerson.parentDeptsIdList')" for="dd-book-person-ft-parentDeptsIdList">Parent Depts Id List</label>
+                        <input type="text" class="form-control" name="parentDeptsIdList" id="dd-book-person-ft-parentDeptsIdList"
+                            :class="{'valid': !$v.ddBookPerson.parentDeptsIdList.$invalid, 'invalid': $v.ddBookPerson.parentDeptsIdList.$invalid }" v-model="$v.ddBookPerson.parentDeptsIdList.$model" />
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

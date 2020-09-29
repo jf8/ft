@@ -8,6 +8,7 @@ export interface IRankingDataFt {
   attendance?: number;
   orderNum?: number;
   parentId?: number;
+  day?: Date;
   liveSharing?: ILiveSharingFt;
 }
 
@@ -20,6 +21,7 @@ export class RankingDataFt implements IRankingDataFt {
     public attendance?: number,
     public orderNum?: number,
     public parentId?: number,
+    public day?: Date,
     public liveSharing?: ILiveSharingFt
   ) {}
 }

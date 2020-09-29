@@ -49,6 +49,7 @@
                     <th v-on:click="changeOrder('stateCode')"><span v-text="$t('ftApp.ddBookPerson.stateCode')">State Code</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'stateCode'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('position')"><span v-text="$t('ftApp.ddBookPerson.position')">Position</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'position'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('roles')"><span v-text="$t('ftApp.ddBookPerson.roles')">Roles</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'roles'"></jhi-sort-indicator></th>
+                    <th v-on:click="changeOrder('parentDeptsIdList')"><span v-text="$t('ftApp.ddBookPerson.parentDeptsIdList')">Parent Depts Id List</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'parentDeptsIdList'"></jhi-sort-indicator></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -82,6 +83,7 @@
                     <td>{{ddBookPerson.stateCode}}</td>
                     <td>{{ddBookPerson.position}}</td>
                     <td>{{ddBookPerson.roles}}</td>
+                    <td>{{ddBookPerson.parentDeptsIdList}}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <router-link :to="{name: 'DdBookPersonFtView', params: {ddBookPersonId: ddBookPerson.id}}" tag="button" class="btn btn-info btn-sm details">

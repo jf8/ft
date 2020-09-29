@@ -97,6 +97,9 @@ public class DdBookPerson implements Serializable {
     @Column(name = "roles")
     private String roles;
 
+    @Column(name = "parent_depts_id_list")
+    private String parentDeptsIdList;
+
     @ManyToMany(mappedBy = "ddBookPeople")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
@@ -423,6 +426,19 @@ public class DdBookPerson implements Serializable {
         this.roles = roles;
     }
 
+    public String getParentDeptsIdList() {
+        return parentDeptsIdList;
+    }
+
+    public DdBookPerson parentDeptsIdList(String parentDeptsIdList) {
+        this.parentDeptsIdList = parentDeptsIdList;
+        return this;
+    }
+
+    public void setParentDeptsIdList(String parentDeptsIdList) {
+        this.parentDeptsIdList = parentDeptsIdList;
+    }
+
     public Set<DdBookDept> getDdBookDepts() {
         return ddBookDepts;
     }
@@ -494,6 +510,7 @@ public class DdBookPerson implements Serializable {
             ", stateCode='" + getStateCode() + "'" +
             ", position='" + getPosition() + "'" +
             ", roles='" + getRoles() + "'" +
+            ", parentDeptsIdList='" + getParentDeptsIdList() + "'" +
             "}";
     }
 }

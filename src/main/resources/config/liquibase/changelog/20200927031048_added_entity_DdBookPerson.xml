@@ -88,6 +88,9 @@
             <column name="roles" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="parent_depts_id_list" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -135,6 +138,7 @@
             <column name="state_code" type="string"/>
             <column name="position" type="string"/>
             <column name="roles" type="string"/>
+            <column name="parent_depts_id_list" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

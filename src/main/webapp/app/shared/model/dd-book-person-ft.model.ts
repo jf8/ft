@@ -26,6 +26,7 @@ export interface IDdBookPersonFt {
   stateCode?: string;
   position?: string;
   roles?: string;
+  parentDeptsIdList?: string;
   ddBookDepts?: IDdBookDeptFt[];
 }
 
@@ -56,6 +57,7 @@ export class DdBookPersonFt implements IDdBookPersonFt {
     public stateCode?: string,
     public position?: string,
     public roles?: string,
+    public parentDeptsIdList?: string,
     public ddBookDepts?: IDdBookDeptFt[]
   ) {
     this.isBoss = this.isBoss || false;

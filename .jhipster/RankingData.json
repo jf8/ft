@@ -24,6 +24,10 @@
     {
       "fieldName": "parentId",
       "fieldType": "Long"
+    },
+    {
+      "fieldName": "day",
+      "fieldType": "Instant"
     }
   ],
   "relationships": [

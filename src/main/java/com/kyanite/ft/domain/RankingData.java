@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 /**
  * A RankingData.
@@ -40,6 +41,9 @@ public class RankingData implements Serializable {
 
     @Column(name = "parent_id")
     private Long parentId;
+
+    @Column(name = "day")
+    private Instant day;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "rankingData", allowSetters = true)
@@ -132,6 +136,19 @@ public class RankingData implements Serializable {
         this.parentId = parentId;
     }
 
+    public Instant getDay() {
+        return day;
+    }
+
+    public RankingData day(Instant day) {
+        this.day = day;
+        return this;
+    }
+
+    public void setDay(Instant day) {
+        this.day = day;
+    }
+
     public LiveSharing getLiveSharing() {
         return liveSharing;
     }
@@ -173,6 +190,7 @@ public class RankingData implements Serializable {
             ", attendance=" + getAttendance() +
             ", orderNum=" + getOrderNum() +
             ", parentId=" + getParentId() +
+            ", day='" + getDay() + "'" +
             "}";
     }
 }

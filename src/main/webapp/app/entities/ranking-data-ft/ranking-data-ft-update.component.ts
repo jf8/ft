@@ -1,6 +1,10 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
+import format from 'date-fns/format';
+import parse from 'date-fns/parse';
+import parseISO from 'date-fns/parseISO';
+import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import LiveSharingFtService from '../live-sharing-ft/live-sharing-ft.service';
 import { ILiveSharingFt } from '@/shared/model/live-sharing-ft.model';
@@ -17,6 +21,7 @@ const validations: any = {
     attendance: {},
     orderNum: {},
     parentId: {},
+    day: {},
   },
 };
 
@@ -76,10 +81,34 @@ export default class RankingDataFtUpdate extends Vue {
     }
   }
 
+  public convertDateTimeFromServer(date: Date): string {
+    if (date) {
+      return format(date, DATE_TIME_LONG_FORMAT);
+    }
+    return null;
+  }
+
+  public updateInstantField(field, event) {
+    if (event.target.value) {
+      this.rankingData[field] = parse(event.target.value, DATE_TIME_LONG_FORMAT, new Date());
+    } else {
+      this.rankingData[field] = null;
+    }
+  }
+
+  public updateZonedDateTimeField(field, event) {
+    if (event.target.value) {
+      this.rankingData[field] = parse(event.target.value, DATE_TIME_LONG_FORMAT, new Date());
+    } else {
+      this.rankingData[field] = null;
+    }
+  }
+
   public retrieveRankingDataFt(rankingDataId): void {
     this.rankingDataService()
       .find(rankingDataId)
       .then(res => {
+        res.day = new Date(res.day);
         this.rankingData = res;
       });
   }

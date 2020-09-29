@@ -13,7 +13,8 @@ entity RankingData{
     signdPeople Long,
     attendance BigDecimal,
     orderNum Long,
-    parentId Long
+    parentId Long,
+    day Instant
 }
 
 
@@ -60,7 +61,8 @@ entity DdBookPerson {
         extattr String,
         stateCode  String,
         position  String,
-        roles  String
+        roles  String,
+        parentDeptsIdList String
 }
 
 

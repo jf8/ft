@@ -22,6 +22,7 @@
       "attendance": "Attendance",
       "orderNum": "Order Num",
       "parentId": "Parent Id",
+      "day": "Day",
       "liveSharing": "Live Sharing"
     }
   }
