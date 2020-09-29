@@ -47,6 +47,12 @@
                         <span v-if="rankingData.day">{{$d(Date.parse(rankingData.day), 'long') }}</span>
                     </dd>
                     <dt>
+                        <span v-text="$t('ftApp.rankingData.isLeaf')">Is Leaf</span>
+                    </dt>
+                    <dd>
+                        <span>{{rankingData.isLeaf}}</span>
+                    </dd>
+                    <dt>
                         <span v-text="$t('ftApp.rankingData.liveSharing')">Live Sharing</span>
                     </dt>
                     <dd>

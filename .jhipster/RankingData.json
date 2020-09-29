@@ -28,6 +28,10 @@
     {
       "fieldName": "day",
       "fieldType": "Instant"
+    },
+    {
+      "fieldName": "isLeaf",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [

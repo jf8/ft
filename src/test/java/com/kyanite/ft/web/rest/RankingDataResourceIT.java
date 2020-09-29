@@ -59,6 +59,9 @@ public class RankingDataResourceIT {
     private static final Instant DEFAULT_DAY = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DAY = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Boolean DEFAULT_IS_LEAF = false;
+    private static final Boolean UPDATED_IS_LEAF = true;
+
     @Autowired
     private RankingDataRepository rankingDataRepository;
 
@@ -87,7 +90,8 @@ public class RankingDataResourceIT {
             .attendance(DEFAULT_ATTENDANCE)
             .orderNum(DEFAULT_ORDER_NUM)
             .parentId(DEFAULT_PARENT_ID)
-            .day(DEFAULT_DAY);
+            .day(DEFAULT_DAY)
+            .isLeaf(DEFAULT_IS_LEAF);
         return rankingData;
     }
     /**
@@ -104,7 +108,8 @@ public class RankingDataResourceIT {
             .attendance(UPDATED_ATTENDANCE)
             .orderNum(UPDATED_ORDER_NUM)
             .parentId(UPDATED_PARENT_ID)
-            .day(UPDATED_DAY);
+            .day(UPDATED_DAY)
+            .isLeaf(UPDATED_IS_LEAF);
         return rankingData;
     }
 
@@ -134,6 +139,7 @@ public class RankingDataResourceIT {
         assertThat(testRankingData.getOrderNum()).isEqualTo(DEFAULT_ORDER_NUM);
         assertThat(testRankingData.getParentId()).isEqualTo(DEFAULT_PARENT_ID);
         assertThat(testRankingData.getDay()).isEqualTo(DEFAULT_DAY);
+        assertThat(testRankingData.isIsLeaf()).isEqualTo(DEFAULT_IS_LEAF);
     }
 
     @Test
@@ -173,7 +179,8 @@ public class RankingDataResourceIT {
             .andExpect(jsonPath("$.[*].attendance").value(hasItem(DEFAULT_ATTENDANCE.intValue())))
             .andExpect(jsonPath("$.[*].orderNum").value(hasItem(DEFAULT_ORDER_NUM.intValue())))
             .andExpect(jsonPath("$.[*].parentId").value(hasItem(DEFAULT_PARENT_ID.intValue())))
-            .andExpect(jsonPath("$.[*].day").value(hasItem(DEFAULT_DAY.toString())));
+            .andExpect(jsonPath("$.[*].day").value(hasItem(DEFAULT_DAY.toString())))
+            .andExpect(jsonPath("$.[*].isLeaf").value(hasItem(DEFAULT_IS_LEAF.booleanValue())));
     }
     
     @Test
@@ -193,7 +200,8 @@ public class RankingDataResourceIT {
             .andExpect(jsonPath("$.attendance").value(DEFAULT_ATTENDANCE.intValue()))
             .andExpect(jsonPath("$.orderNum").value(DEFAULT_ORDER_NUM.intValue()))
             .andExpect(jsonPath("$.parentId").value(DEFAULT_PARENT_ID.intValue()))
-            .andExpect(jsonPath("$.day").value(DEFAULT_DAY.toString()));
+            .andExpect(jsonPath("$.day").value(DEFAULT_DAY.toString()))
+            .andExpect(jsonPath("$.isLeaf").value(DEFAULT_IS_LEAF.booleanValue()));
     }
     @Test
     @Transactional
@@ -222,7 +230,8 @@ public class RankingDataResourceIT {
             .attendance(UPDATED_ATTENDANCE)
             .orderNum(UPDATED_ORDER_NUM)
             .parentId(UPDATED_PARENT_ID)
-            .day(UPDATED_DAY);
+            .day(UPDATED_DAY)
+            .isLeaf(UPDATED_IS_LEAF);
 
         restRankingDataMockMvc.perform(put("/api/ranking-data")
             .contentType(MediaType.APPLICATION_JSON)
@@ -240,6 +249,7 @@ public class RankingDataResourceIT {
         assertThat(testRankingData.getOrderNum()).isEqualTo(UPDATED_ORDER_NUM);
         assertThat(testRankingData.getParentId()).isEqualTo(UPDATED_PARENT_ID);
         assertThat(testRankingData.getDay()).isEqualTo(UPDATED_DAY);
+        assertThat(testRankingData.isIsLeaf()).isEqualTo(UPDATED_IS_LEAF);
     }
 
     @Test

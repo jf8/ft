@@ -49,6 +49,11 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.rankingData.isLeaf')" for="ranking-data-ft-isLeaf">Is Leaf</label>
+                        <input type="checkbox" class="form-check" name="isLeaf" id="ranking-data-ft-isLeaf"
+                            :class="{'valid': !$v.rankingData.isLeaf.$invalid, 'invalid': $v.rankingData.isLeaf.$invalid }" v-model="$v.rankingData.isLeaf.$model" />
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label" v-text="$t('ftApp.rankingData.liveSharing')" for="ranking-data-ft-liveSharing">Live Sharing</label>
                         <select class="form-control" id="ranking-data-ft-liveSharing" name="liveSharing" v-model="rankingData.liveSharing">
                             <option v-bind:value="null"></option>

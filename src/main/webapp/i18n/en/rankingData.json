@@ -23,6 +23,7 @@
       "orderNum": "Order Num",
       "parentId": "Parent Id",
       "day": "Day",
+      "isLeaf": "Is Leaf",
       "liveSharing": "Live Sharing"
     }
   }

@@ -9,6 +9,7 @@ export interface IRankingDataFt {
   orderNum?: number;
   parentId?: number;
   day?: Date;
+  isLeaf?: boolean;
   liveSharing?: ILiveSharingFt;
 }
 
@@ -22,6 +23,9 @@ export class RankingDataFt implements IRankingDataFt {
     public orderNum?: number,
     public parentId?: number,
     public day?: Date,
+    public isLeaf?: boolean,
     public liveSharing?: ILiveSharingFt
-  ) {}
+  ) {
+    this.isLeaf = this.isLeaf || false;
+  }
 }
