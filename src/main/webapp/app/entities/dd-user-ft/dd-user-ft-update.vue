@@ -124,6 +124,12 @@
                         <input type="text" class="form-control" name="roles" id="dd-user-ft-roles"
                             :class="{'valid': !$v.ddUser.roles.$invalid, 'invalid': $v.ddUser.roles.$invalid }" v-model="$v.ddUser.roles.$model" />
                     </div>
+                    <div class="form-group">
+                        <label v-text="$t('ftApp.ddUser.ddBookDept')" for="dd-user-ft-ddBookDept">Dd Book Dept</label>
+                        <select class="form-control" id="dd-user-ft-ddBookDept" multiple name="ddBookDept" v-model="ddUser.ddBookDepts">
+                            <option v-bind:value="getSelected(ddUser.ddBookDepts, ddBookDeptOption)" v-for="ddBookDeptOption in ddBookDepts" :key="ddBookDeptOption.id">{{ddBookDeptOption.id}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

@@ -31,7 +31,9 @@
       "deptManagerUseridList": "Dept Manager Userid List",
       "sourceIdentifier": "Source Identifier",
       "ext": "Ext",
+      "ddBookDept": "Dd Book Dept",
       "ddBookPerson": "Dd Book Person",
+      "ddBookDept": "Dd Book Dept",
       "ddUser": "Dd User"
     }
   }

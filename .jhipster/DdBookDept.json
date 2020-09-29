@@ -64,6 +64,12 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ddBookDept",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "ddBookDept"
+    },
+    {
       "relationshipType": "many-to-many",
       "otherEntityName": "ddBookPerson",
       "otherEntityRelationshipName": "ddBookDept",
@@ -73,10 +79,18 @@
     },
     {
       "relationshipType": "many-to-one",
+      "otherEntityName": "ddBookDept",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "ddBookDept",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
       "otherEntityName": "ddUser",
       "otherEntityRelationshipName": "ddBookDept",
       "relationshipName": "ddUser",
-      "otherEntityField": "id"
+      "otherEntityField": "id",
+      "ownerSide": false
     }
   ],
   "changelogDate": "20200927030948",

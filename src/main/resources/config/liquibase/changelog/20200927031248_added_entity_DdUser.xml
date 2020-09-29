@@ -91,6 +91,17 @@
 
     <changeSet id="20200927031248-1-relations" author="jhipster">
 
+        <createTable tableName="dd_user_dd_book_dept">
+            <column name="dd_book_dept_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dd_user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="dd_user_id, dd_book_dept_id" tableName="dd_user_dd_book_dept"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

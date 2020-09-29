@@ -20,11 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dd_book_person"/>
         
-        <addForeignKeyConstraint baseColumnNames="dd_user_id"
+        <addForeignKeyConstraint baseColumnNames="dd_book_dept_id"
                                  baseTableName="dd_book_dept"
-                                 constraintName="fk_dd_book_dept_dd_user_id"
+                                 constraintName="fk_dd_book_dept_dd_book_dept_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="dd_user"/>
+                                 referencedTableName="dd_book_dept"/>
 
     </changeSet>
 </databaseChangeLog>

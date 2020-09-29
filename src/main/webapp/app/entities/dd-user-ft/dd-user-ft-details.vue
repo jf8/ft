@@ -142,6 +142,14 @@
                     <dd>
                         <span>{{ddUser.roles}}</span>
                     </dd>
+                    <dt>
+                        <span v-text="$t('ftApp.ddUser.ddBookDept')">Dd Book Dept</span>
+                    </dt>
+                    <dd>
+                        <span v-for="(ddBookDept, i) in ddUser.ddBookDepts" :key="ddBookDept.id">{{i > 0 ? ', ' : ''}}
+                            <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: ddBookDept.id}}">{{ddBookDept.id}}</router-link>
+                        </span>
+                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

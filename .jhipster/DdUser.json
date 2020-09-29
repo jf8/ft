@@ -96,10 +96,12 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-many",
       "otherEntityName": "ddBookDept",
       "otherEntityRelationshipName": "ddUser",
-      "relationshipName": "ddBookDept"
+      "relationshipName": "ddBookDept",
+      "otherEntityField": "id",
+      "ownerSide": true
     }
   ],
   "changelogDate": "20200927031248",
