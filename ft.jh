@@ -14,7 +14,8 @@ entity RankingData{
     attendance BigDecimal,
     orderNum Long,
     parentId Long,
-    day Instant
+    day Instant,
+    isLeaf Boolean
 }
 
 
