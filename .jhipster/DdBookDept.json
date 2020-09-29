@@ -60,6 +60,10 @@
     {
       "fieldName": "ext",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "isLeaf",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [

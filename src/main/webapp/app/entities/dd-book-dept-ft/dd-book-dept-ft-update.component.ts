@@ -29,6 +29,7 @@ const validations: any = {
     deptManagerUseridList: {},
     sourceIdentifier: {},
     ext: {},
+    isLeaf: {},
   },
 };
 

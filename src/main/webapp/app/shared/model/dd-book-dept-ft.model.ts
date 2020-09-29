@@ -19,6 +19,7 @@ export interface IDdBookDeptFt {
   deptManagerUseridList?: string;
   sourceIdentifier?: string;
   ext?: string;
+  isLeaf?: boolean;
   children?: IDdBookDeptFt[];
   ddBookPeople?: IDdBookPersonFt[];
   parent?: IDdBookDeptFt;
@@ -43,6 +44,7 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     public deptManagerUseridList?: string,
     public sourceIdentifier?: string,
     public ext?: string,
+    public isLeaf?: boolean,
     public children?: IDdBookDeptFt[],
     public ddBookPeople?: IDdBookPersonFt[],
     public parent?: IDdBookDeptFt,
@@ -52,5 +54,6 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     this.autoAddUser = this.autoAddUser || false;
     this.deptHiding = this.deptHiding || false;
     this.outerDept = this.outerDept || false;
+    this.isLeaf = this.isLeaf || false;
   }
 }

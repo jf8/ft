@@ -95,6 +95,12 @@
                         <span>{{ddBookDept.ext}}</span>
                     </dd>
                     <dt>
+                        <span v-text="$t('ftApp.ddBookDept.isLeaf')">Is Leaf</span>
+                    </dt>
+                    <dd>
+                        <span>{{ddBookDept.isLeaf}}</span>
+                    </dd>
+                    <dt>
                         <span v-text="$t('ftApp.ddBookDept.ddBookPerson')">Dd Book Person</span>
                     </dt>
                     <dd>

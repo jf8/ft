@@ -85,6 +85,11 @@
                             :class="{'valid': !$v.ddBookDept.ext.$invalid, 'invalid': $v.ddBookDept.ext.$invalid }" v-model="$v.ddBookDept.ext.$model" />
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.ddBookDept.isLeaf')" for="dd-book-dept-ft-isLeaf">Is Leaf</label>
+                        <input type="checkbox" class="form-check" name="isLeaf" id="dd-book-dept-ft-isLeaf"
+                            :class="{'valid': !$v.ddBookDept.isLeaf.$invalid, 'invalid': $v.ddBookDept.isLeaf.$invalid }" v-model="$v.ddBookDept.isLeaf.$model" />
+                    </div>
+                    <div class="form-group">
                         <label v-text="$t('ftApp.ddBookDept.ddBookPerson')" for="dd-book-dept-ft-ddBookPerson">Dd Book Person</label>
                         <select class="form-control" id="dd-book-dept-ft-ddBookPerson" multiple name="ddBookPerson" v-model="ddBookDept.ddBookPeople">
                             <option v-bind:value="getSelected(ddBookDept.ddBookPeople, ddBookPersonOption)" v-for="ddBookPersonOption in ddBookPeople" :key="ddBookPersonOption.id">{{ddBookPersonOption.id}}</option>
