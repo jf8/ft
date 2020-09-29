@@ -1,5 +1,6 @@
 package com.kyanite.ft.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -69,6 +70,10 @@ public class DdBookDept implements Serializable {
     @Column(name = "ext")
     private String ext;
 
+    @OneToMany(mappedBy = "ddBookDept")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<DdBookDept> ddBookDepts = new HashSet<>();
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "dd_book_dept_dd_book_person",
@@ -78,7 +83,12 @@ public class DdBookDept implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "ddBookDepts", allowSetters = true)
-    private DdUser ddUser;
+    private DdBookDept ddBookDept;
+
+    @ManyToMany(mappedBy = "ddBookDepts")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnore
+    private Set<DdUser> ddUsers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -284,6 +294,31 @@ public class DdBookDept implements Serializable {
         this.ext = ext;
     }
 
+    public Set<DdBookDept> getDdBookDepts() {
+        return ddBookDepts;
+    }
+
+    public DdBookDept ddBookDepts(Set<DdBookDept> ddBookDepts) {
+        this.ddBookDepts = ddBookDepts;
+        return this;
+    }
+
+    public DdBookDept addDdBookDept(DdBookDept ddBookDept) {
+        this.ddBookDepts.add(ddBookDept);
+        ddBookDept.setDdBookDept(this);
+        return this;
+    }
+
+    public DdBookDept removeDdBookDept(DdBookDept ddBookDept) {
+        this.ddBookDepts.remove(ddBookDept);
+        ddBookDept.setDdBookDept(null);
+        return this;
+    }
+
+    public void setDdBookDepts(Set<DdBookDept> ddBookDepts) {
+        this.ddBookDepts = ddBookDepts;
+    }
+
     public Set<DdBookPerson> getDdBookPeople() {
         return ddBookPeople;
     }
@@ -309,17 +344,42 @@ public class DdBookDept implements Serializable {
         this.ddBookPeople = ddBookPeople;
     }
 
-    public DdUser getDdUser() {
-        return ddUser;
+    public DdBookDept getDdBookDept() {
+        return ddBookDept;
     }
 
-    public DdBookDept ddUser(DdUser ddUser) {
-        this.ddUser = ddUser;
+    public DdBookDept ddBookDept(DdBookDept ddBookDept) {
+        this.ddBookDept = ddBookDept;
         return this;
     }
 
-    public void setDdUser(DdUser ddUser) {
-        this.ddUser = ddUser;
+    public void setDdBookDept(DdBookDept ddBookDept) {
+        this.ddBookDept = ddBookDept;
+    }
+
+    public Set<DdUser> getDdUsers() {
+        return ddUsers;
+    }
+
+    public DdBookDept ddUsers(Set<DdUser> ddUsers) {
+        this.ddUsers = ddUsers;
+        return this;
+    }
+
+    public DdBookDept addDdUser(DdUser ddUser) {
+        this.ddUsers.add(ddUser);
+        ddUser.getDdBookDepts().add(this);
+        return this;
+    }
+
+    public DdBookDept removeDdUser(DdUser ddUser) {
+        this.ddUsers.remove(ddUser);
+        ddUser.getDdBookDepts().remove(this);
+        return this;
+    }
+
+    public void setDdUsers(Set<DdUser> ddUsers) {
+        this.ddUsers = ddUsers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

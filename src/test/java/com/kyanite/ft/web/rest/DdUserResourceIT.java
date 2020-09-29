@@ -14,16 +14,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -107,6 +111,12 @@ public class DdUserResourceIT {
 
     @Autowired
     private DdUserRepository ddUserRepository;
+
+    @Mock
+    private DdUserRepository ddUserRepositoryMock;
+
+    @Mock
+    private DdUserService ddUserServiceMock;
 
     @Autowired
     private DdUserService ddUserService;
@@ -286,6 +296,26 @@ public class DdUserResourceIT {
             .andExpect(jsonPath("$.[*].roles").value(hasItem(DEFAULT_ROLES)));
     }
     
+    @SuppressWarnings({"unchecked"})
+    public void getAllDdUsersWithEagerRelationshipsIsEnabled() throws Exception {
+        when(ddUserServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restDdUserMockMvc.perform(get("/api/dd-users?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(ddUserServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void getAllDdUsersWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(ddUserServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restDdUserMockMvc.perform(get("/api/dd-users?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(ddUserServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
     @Test
     @Transactional
     public void getDdUser() throws Exception {

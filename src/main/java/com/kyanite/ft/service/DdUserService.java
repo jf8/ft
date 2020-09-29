@@ -52,6 +52,15 @@ public class DdUserService {
 
 
     /**
+     * Get all the ddUsers with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<DdUser> findAllWithEagerRelationships(Pageable pageable) {
+        return ddUserRepository.findAllWithEagerRelationships(pageable);
+    }
+
+    /**
      * Get one ddUser by id.
      *
      * @param id the id of the entity.
@@ -60,7 +69,7 @@ public class DdUserService {
     @Transactional(readOnly = true)
     public Optional<DdUser> findOne(Long id) {
         log.debug("Request to get DdUser : {}", id);
-        return ddUserRepository.findById(id);
+        return ddUserRepository.findOneWithEagerRelationships(id);
     }
 
     /**

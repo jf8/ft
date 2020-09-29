@@ -1,3 +1,4 @@
+import { IDdBookDeptFt } from '@/shared/model/dd-book-dept-ft.model';
 import { IDdBookPersonFt } from '@/shared/model/dd-book-person-ft.model';
 import { IDdUserFt } from '@/shared/model/dd-user-ft.model';
 
@@ -18,8 +19,10 @@ export interface IDdBookDeptFt {
   deptManagerUseridList?: string;
   sourceIdentifier?: string;
   ext?: string;
+  ddBookDepts?: IDdBookDeptFt[];
   ddBookPeople?: IDdBookPersonFt[];
-  ddUser?: IDdUserFt;
+  ddBookDept?: IDdBookDeptFt;
+  ddUsers?: IDdUserFt[];
 }
 
 export class DdBookDeptFt implements IDdBookDeptFt {
@@ -40,8 +43,10 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     public deptManagerUseridList?: string,
     public sourceIdentifier?: string,
     public ext?: string,
+    public ddBookDepts?: IDdBookDeptFt[],
     public ddBookPeople?: IDdBookPersonFt[],
-    public ddUser?: IDdUserFt
+    public ddBookDept?: IDdBookDeptFt,
+    public ddUsers?: IDdUserFt[]
   ) {
     this.createDeptGroup = this.createDeptGroup || false;
     this.autoAddUser = this.autoAddUser || false;

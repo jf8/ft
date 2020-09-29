@@ -93,8 +93,11 @@ public class DdUser implements Serializable {
     @Column(name = "roles")
     private String roles;
 
-    @OneToMany(mappedBy = "ddUser")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JoinTable(name = "dd_user_dd_book_dept",
+               joinColumns = @JoinColumn(name = "dd_user_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "dd_book_dept_id", referencedColumnName = "id"))
     private Set<DdBookDept> ddBookDepts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -416,13 +419,13 @@ public class DdUser implements Serializable {
 
     public DdUser addDdBookDept(DdBookDept ddBookDept) {
         this.ddBookDepts.add(ddBookDept);
-        ddBookDept.setDdUser(this);
+        ddBookDept.getDdUsers().add(this);
         return this;
     }
 
     public DdUser removeDdBookDept(DdBookDept ddBookDept) {
         this.ddBookDepts.remove(ddBookDept);
-        ddBookDept.setDdUser(null);
+        ddBookDept.getDdUsers().remove(this);
         return this;
     }
 

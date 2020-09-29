@@ -87,12 +87,18 @@ public class DdUserResource {
      * {@code GET  /dd-users} : get all the ddUsers.
      *
      * @param pageable the pagination information.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of ddUsers in body.
      */
     @GetMapping("/dd-users")
-    public ResponseEntity<List<DdUser>> getAllDdUsers(Pageable pageable) {
+    public ResponseEntity<List<DdUser>> getAllDdUsers(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of DdUsers");
-        Page<DdUser> page = ddUserService.findAll(pageable);
+        Page<DdUser> page;
+        if (eagerload) {
+            page = ddUserService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = ddUserService.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

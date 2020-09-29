@@ -40,6 +40,8 @@ export default class DdBookDeptFtUpdate extends Vue {
   @Inject('ddBookDeptService') private ddBookDeptService: () => DdBookDeptFtService;
   public ddBookDept: IDdBookDeptFt = new DdBookDeptFt();
 
+  public ddBookDepts: IDdBookDeptFt[] = [];
+
   @Inject('ddBookPersonService') private ddBookPersonService: () => DdBookPersonFtService;
 
   public ddBookPeople: IDdBookPersonFt[] = [];
@@ -106,10 +108,20 @@ export default class DdBookDeptFtUpdate extends Vue {
   }
 
   public initRelationships(): void {
+    this.ddBookDeptService()
+      .retrieve()
+      .then(res => {
+        this.ddBookDepts = res.data;
+      });
     this.ddBookPersonService()
       .retrieve()
       .then(res => {
         this.ddBookPeople = res.data;
+      });
+    this.ddBookDeptService()
+      .retrieve()
+      .then(res => {
+        this.ddBookDepts = res.data;
       });
     this.ddUserService()
       .retrieve()
