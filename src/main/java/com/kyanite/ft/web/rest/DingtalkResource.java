@@ -1,4 +1,4 @@
-package com.kyanite.gm.web.rest;
+package com.kyanite.ft.web.rest;
 
 import com.alibaba.fastjson.JSON;
 import com.dingtalk.api.DefaultDingTalkClient;
@@ -10,18 +10,17 @@ import com.dingtalk.api.response.OapiReportListResponse;
 import com.dingtalk.api.response.OapiUserGetResponse;
 import com.dingtalk.api.response.OapiUserGetuserinfoResponse;
 import com.google.common.collect.Maps;
-import com.kyanite.gm.config.Constants;
-import com.kyanite.gm.dingtalk.aes.DingTalkEncryptException;
-import com.kyanite.gm.dingtalk.auth.DingtalkAuthService;
-import com.kyanite.gm.dingtalk.user.DingtalkUserService;
-import com.kyanite.gm.domain.DdUser;
-import com.kyanite.gm.domain.User;
-import com.kyanite.gm.repository.AuthorityRepository;
-import com.kyanite.gm.repository.DdUserRepository;
-import com.kyanite.gm.repository.UserRepository;
-import com.kyanite.gm.security.jwt.JWTFilter;
-import com.kyanite.gm.security.jwt.TokenProvider;
-import com.kyanite.gm.service.DdUserService;
+import com.kyanite.ft.config.Constants;
+import com.kyanite.ft.dingtalk.aes.DingTalkEncryptException;
+import com.kyanite.ft.dingtalk.auth.DingtalkAuthService;
+import com.kyanite.ft.dingtalk.user.DingtalkUserService;
+import com.kyanite.ft.domain.DdUser;
+import com.kyanite.ft.domain.User;
+import com.kyanite.ft.repository.DdUserRepository;
+import com.kyanite.ft.repository.UserRepository;
+import com.kyanite.ft.security.jwt.JWTFilter;
+import com.kyanite.ft.security.jwt.TokenProvider;
+import com.kyanite.ft.service.DdUserService;
 import com.taobao.api.ApiException;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +38,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,14 +51,15 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static com.kyanite.gm.config.Constants.DEFAULT_DD_PASSWORD;
+import static com.kyanite.ft.config.Constants.DEFAULT_DD_PASSWORD;
+
 
 @RestController
 @RequestMapping("/api")
 @CacheConfig(cacheNames = {Constants.REPEAT_LOGIN})
 public class DingtalkResource {
 
-    private final Logger log = LoggerFactory.getLogger(com.kyanite.gm.web.rest.DingtalkResource.class);
+    private final Logger log = LoggerFactory.getLogger(com.kyanite.ft.web.rest.DingtalkResource.class);
 
     @Autowired
     private DingtalkUserService dingtalkUserService;
@@ -265,89 +264,6 @@ public class DingtalkResource {
 
 
 
-
-    public static void main1(String[] args) {
-        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/send");
-        OapiChatSendRequest request = new OapiChatSendRequest();
-        request.setChatid("chat788d76b80011c05d451a5cfff30e9b38");
-//{"title":"群聊-测试2","chatId":"chat5d75f51f2f4b7e2d7242fdc7613db1e0"}
-        //{"title":"picshow开发群","chatId":"chat788d76b80011c05d451a5cfff30e9b38"}
-        OapiChatSendRequest.Msg msg = new OapiChatSendRequest.Msg();
-        msg.setMsgtype("text");
-        OapiChatSendRequest.Text text = new OapiChatSendRequest.Text();
-        text.setContent("文本消息");
-        msg.setText(text);
-
-        request.setMsg(msg);
-        try {
-            OapiChatSendResponse response = client.execute(request, "634dc12a4dc93d8fa5b055e7da70eaff");
-            System.out.println(JSON.toJSONString(response));
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    @PostConstruct
-    public void test() {
-
-        String accessToken = null;
-        try {
-            accessToken = dingtalkAuthService.getAccessToken();
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
-
-
-
-//        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/cspace/get_custom_space");
-//        OapiCspaceGetCustomSpaceRequest request = new OapiCspaceGetCustomSpaceRequest();
-////        request.setAgentId("132274468");
-//        request.setDomain("VillDoctor");
-//        request.setHttpMethod("GET");
-//        OapiCspaceGetCustomSpaceResponse response = null;
-//        try {
-//            response = client.execute(request,dingtalkAuthService.getAccessToken());
-//        } catch (ApiException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(JSON.toJSONString(response));
-
-
-//        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/cspace/grant_custom_space");
-//        OapiCspaceGrantCustomSpaceRequest request = new OapiCspaceGrantCustomSpaceRequest();
-//        request.setDomain("VillDoctor");
-//        request.setType("add");
-//        request.setUserid("v_guosq@fosun.com");
-//        request.setPath("/");
-//        request.setDuration(3600L);
-//        request.setHttpMethod("GET");
-//        try {
-//            OapiCspaceGrantCustomSpaceResponse response = client.execute(request,accessToken);
-//            System.out.println(JSON.toJSONString(response));
-//        } catch (ApiException e) {
-//            e.printStackTrace();
-//        }
-
-
-//        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/cspace/grant_custom_space");
-//        OapiCspaceGrantCustomSpaceRequest request = new OapiCspaceGrantCustomSpaceRequest();
-//        request.setDomain("VillDoctor");
-//        request.setType("download");
-//        request.setUserid("v_guosq@fosun.com");
-//        request.setFileids("8845198586");
-//        request.setDuration(3600L);
-//        request.setHttpMethod("GET");
-//        try {
-//            OapiCspaceGrantCustomSpaceResponse response = client.execute(request,accessToken);
-//            System.out.println(JSON.toJSONString(response));
-//        } catch (ApiException e) {
-//            e.printStackTrace();
-//        }
-
-
-    }
 
 
     public static void main(String[] args) {

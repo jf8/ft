@@ -34,7 +34,7 @@ public class RankingData implements Serializable {
     private Long signdPeople;
 
     @Column(name = "attendance", precision = 21, scale = 2)
-    private BigDecimal attendance;
+    private BigDecimal attendance= BigDecimal.valueOf(0);
 
     @Column(name = "order_num")
     private Long orderNum;

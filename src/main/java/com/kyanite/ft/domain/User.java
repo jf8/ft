@@ -24,6 +24,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "jhi_user")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends AbstractAuditingEntity implements Serializable {
 

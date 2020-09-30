@@ -9,18 +9,16 @@ import Router from 'vue-router';
 
 const Home = () => import('@/core/home/home.vue');
 const Error = () => import('@/core/error/error.vue');
-
 import account from '@/router/account.ts';
 import admin from '@/router/admin.ts';
 import entities from '@/router/entities.ts';
 import pages from '@/router/pages.ts';
-import role from '@/router/role.ts';
 
 Vue.use(Router);
 
 // prettier-ignore
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -42,7 +40,6 @@ export default new Router({
     ...account,
     ...admin,
     ...entities,
-    ...pages,
-    ...role
+    ...pages
   ]
 });

@@ -15,8 +15,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "dd_user")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class DdUser implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class DdUser extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

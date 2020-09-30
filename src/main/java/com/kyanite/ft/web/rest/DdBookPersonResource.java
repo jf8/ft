@@ -104,7 +104,7 @@ public class DdBookPersonResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the ddBookPerson, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/dd-book-people/{id}")
-    public ResponseEntity<DdBookPerson> getDdBookPerson(@PathVariable Long id) {
+    public ResponseEntity<DdBookPerson> getDdBookPerson(@PathVariable String id) {
         log.debug("REST request to get DdBookPerson : {}", id);
         Optional<DdBookPerson> ddBookPerson = ddBookPersonService.findOne(id);
         return ResponseUtil.wrapOrNotFound(ddBookPerson);
@@ -117,7 +117,7 @@ public class DdBookPersonResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/dd-book-people/{id}")
-    public ResponseEntity<Void> deleteDdBookPerson(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteDdBookPerson(@PathVariable String id) {
         log.debug("REST request to delete DdBookPerson : {}", id);
         ddBookPersonService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();

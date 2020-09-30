@@ -15,43 +15,53 @@ const PORT = process.env.PORT && Number(process.env.PORT);
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }),
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
   entry: {
     global: './src/main/webapp/content/scss/global.scss',
-    main: './src/main/webapp/app/main',
+    main: './src/main/webapp/app/main'
   },
   output: {
     path: jhiUtils.root('target/classes/static/'),
     filename: 'app/[name].bundle.js',
-    chunkFilename: 'app/[id].chunk.js',
+    chunkFilename: 'app/[id].chunk.js'
   },
   devServer: {
     contentBase: './target/classes/static/',
     port: 9060,
     proxy: [
       {
-        context: ['/api', '/services', '/management', '/swagger-resources', '/v2/api-docs', '/h2-console', '/auth'],
-        target: 'http://10.170.109.36:8899/ft',
+        context: [
+          '/api',
+          '/services',
+          '/management',
+          '/swagger-resources',
+          '/v2/api-docs',
+          '/h2-console',
+          '/auth'
+        ],
+        target: 'http://127.0.0.1:8899',
         secure: false,
-        headers: { host: 'localhost:9000' },
+        headers: { host: 'localhost:9000' }
       },
       {
-        context: ['/websocket'],
-        target: 'ws://10.170.109.36:8899/ft',
-        ws: true,
-      },
+        context: [
+          '/websocket'
+        ],
+        target: 'ws://127.0.0.1:8899',
+        ws: true
+      }
     ],
     watchOptions: {
-      ignored: /node_modules/,
+      ignored: /node_modules/
     },
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env'),
+      'process.env': require('../config/dev.env')
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
@@ -66,9 +76,9 @@ module.exports = merge(baseWebpackConfig, {
         },
         socket: {
           clients: {
-            heartbeatTimeout: 60000,
-          },
-        },
+            heartbeatTimeout: 60000
+          }
+        }
         /*
         ,ghostMode: { // uncomment this part to disable BrowserSync ghostMode; https://github.com/jhipster/generator-jhipster/issues/11116
           clicks: false,
@@ -78,8 +88,8 @@ module.exports = merge(baseWebpackConfig, {
         } */
       },
       {
-        reload: false,
+        reload: false
       }
-    ),
-  ],
+    )
+  ]
 });

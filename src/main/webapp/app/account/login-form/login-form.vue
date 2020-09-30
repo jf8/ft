@@ -29,6 +29,12 @@
                         <b-link :to="'/account/reset/request'" class="alert-link" v-text="$t('login.password.forgot')">Did you forget your password?</b-link>
                     </b-alert>
                 </div>
+                <div>
+                    <b-alert show variant="warning">
+                      <span v-text="$t('global.messages.info.register.noaccount')">You don't have an account yet?</span>
+                      <b-link :to="'/register'" class="alert-link" v-text="$t('global.messages.info.register.link')">Register a new account</b-link>
+                    </b-alert>
+                </div>
             </div>
         </div>
     </div>
