@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,4 +27,11 @@ public interface DdUserRepository extends JpaRepository<DdUser, Long> {
 
     @Query("select ddUser from DdUser ddUser left join fetch ddUser.ddBookDepts where ddUser.id =:id")
     Optional<DdUser> findOneWithEagerRelationships(@Param("id") Long id);
+
+
+    Optional<DdUser> findFirstByEmailIgnoreCase(String email);
+
+    Optional<DdUser> findOneByLogin(String login);
+
+
 }

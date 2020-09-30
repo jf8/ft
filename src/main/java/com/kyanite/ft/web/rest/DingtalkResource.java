@@ -193,7 +193,7 @@ public class DingtalkResource {
             Cache.ValueWrapper valueWrapper = repeatLoginCache.get(code);
             if(valueWrapper==null){
                 startTime = Instant.now().toEpochMilli();
-                Optional<DdUser> ddUserOptional =ddUserRepository.findOneByLogin(userid);
+                Optional<DdUser> ddUserOptional = ddUserRepository.findOneByLogin(userid);
                 DdUser user = new DdUser();
                 if(ddUserOptional.isPresent()){
                     user = ddUserOptional.get();

@@ -23,11 +23,12 @@ import org.springframework.context.annotation.*;
 public class CacheConfiguration {
     private GitProperties gitProperties;
     private BuildProperties buildProperties;
+    private  JHipsterProperties jHipsterProperties;
     private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
 
     public CacheConfiguration(JHipsterProperties jHipsterProperties) {
         JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
-
+        this.jHipsterProperties = jHipsterProperties;
         jcacheConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
             CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,
                 ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
@@ -61,6 +62,26 @@ public class CacheConfiguration {
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName());
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName() + ".ddBookDepts");
             // jhipster-needle-ehcache-add-entry
+            JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
+            javax.cache.configuration.Configuration<Object, Object> tokenConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
+                CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,
+                    ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(Constants.ACCESS_TOKEN_SECONDS)))
+                    .build());
+            javax.cache.configuration.Configuration<Object, Object> jsapiConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
+                CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,
+                    ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(Constants.JSAPI_TICKET_CACHE_TIME)))
+                    .build());
+            javax.cache.configuration.Configuration<Object, Object> repeatLoginConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
+                CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,
+                    ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(Constants.REPEAT_LOGIN_CACHE_TIME)))
+                    .build());
+
+            cm.createCache(Constants.ACCESS_TOKEN,tokenConfiguration);//ACCESS_TOKEN_SECONDS
+            cm.createCache(Constants.JSAPI_TICKET,jsapiConfiguration);//ACCESS_TOKEN_SECONDS
+            cm.createCache(Constants.REPEAT_LOGIN,repeatLoginConfiguration);//ACCESS_TOKEN_SECONDS
         };
     }
 

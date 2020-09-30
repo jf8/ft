@@ -67,11 +67,12 @@ public class TaskExecutorService {
         log.info("从钉钉获取部门数量："+ departmentList.size());
         departmentList.sort(Comparator.comparing(OapiDepartmentListResponse.Department::getId));
         for (OapiDepartmentListResponse.Department department : departmentList) {
+            log.debug("同步部门：{}",department.getName());
             DdBookDept ddBookDept = new DdBookDept();
             BeanUtils.copyProperties(department,ddBookDept);
             ddBookDept.setParent(getParent(department.getParentid(), departmentList));
             ddBookDept.setIsLeaf(isLeaf(department.getId(),departmentList));
-            ddBookDeptService.save(ddBookDept);
+            ddBookDept = ddBookDeptRepository.saveAndFlush(ddBookDept);
             List<OapiUserListbypageResponse.Userlist> userlists = Lists.newArrayList();
             userListbypage(department.getId(),0L ,userlists);
             for (OapiUserListbypageResponse.Userlist userinfo : userlists) {
@@ -85,6 +86,7 @@ public class TaskExecutorService {
                 ddBookDeptService.save(ddBookDept);
             }
         }
+        log.info("从钉钉获取部门完成");
     }
 
     private Boolean isLeaf(Long id,List<OapiDepartmentListResponse.Department> departmentList){
