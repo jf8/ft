@@ -31,6 +31,30 @@
                         <font-awesome-icon icon="th-list" />
                         <span v-text="$t('global.menu.entities.main')">Entities</span>
                     </span>
+                    <b-dropdown-item to="/live-sharing-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.liveSharingFt')">LiveSharing</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/ranking-data-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.rankingDataFt')">RankingData</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/dd-book-dept-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.ddBookDeptFt')">DdBookDept</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/dd-book-person-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.ddBookPersonFt')">DdBookPerson</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/v-ft-user-sign-info-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.vFtUserSignInfoFt')">VFtUserSignInfo</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item to="/dd-user-ft">
+                        <font-awesome-icon icon="asterisk" />
+                        <span v-text="$t('global.menu.entities.ddUserFt')">DdUser</span>
+                    </b-dropdown-item>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown
