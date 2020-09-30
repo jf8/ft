@@ -48,6 +48,18 @@ public class CacheConfiguration {
             createCache(cm, com.kyanite.ft.domain.User.class.getName());
             createCache(cm, com.kyanite.ft.domain.Authority.class.getName());
             createCache(cm, com.kyanite.ft.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.kyanite.ft.domain.LiveSharing.class.getName());
+            createCache(cm, com.kyanite.ft.domain.LiveSharing.class.getName() + ".rankingData");
+            createCache(cm, com.kyanite.ft.domain.RankingData.class.getName());
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName());
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".children");
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".ddBookPeople");
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".ddUsers");
+            createCache(cm, com.kyanite.ft.domain.DdBookPerson.class.getName());
+            createCache(cm, com.kyanite.ft.domain.DdBookPerson.class.getName() + ".ddBookDepts");
+            createCache(cm, com.kyanite.ft.domain.VFtUserSignInfo.class.getName());
+            createCache(cm, com.kyanite.ft.domain.DdUser.class.getName());
+            createCache(cm, com.kyanite.ft.domain.DdUser.class.getName() + ".ddBookDepts");
             // jhipster-needle-ehcache-add-entry
         };
     }
