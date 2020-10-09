@@ -52,6 +52,10 @@ public class RankingData implements Serializable {
     @JsonIgnoreProperties(value = "rankingData", allowSetters = true)
     private LiveSharing liveSharing;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "rankingData", allowSetters = true)
+    private DdBookDept ddBookDept;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -176,6 +180,19 @@ public class RankingData implements Serializable {
 
     public void setLiveSharing(LiveSharing liveSharing) {
         this.liveSharing = liveSharing;
+    }
+
+    public DdBookDept getDdBookDept() {
+        return ddBookDept;
+    }
+
+    public RankingData ddBookDept(DdBookDept ddBookDept) {
+        this.ddBookDept = ddBookDept;
+        return this;
+    }
+
+    public void setDdBookDept(DdBookDept ddBookDept) {
+        this.ddBookDept = ddBookDept;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

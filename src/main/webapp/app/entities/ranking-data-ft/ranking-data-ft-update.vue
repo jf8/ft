@@ -60,6 +60,13 @@
                             <option v-bind:value="rankingData.liveSharing && liveSharingOption.id === rankingData.liveSharing.id ? rankingData.liveSharing : liveSharingOption" v-for="liveSharingOption in liveSharings" :key="liveSharingOption.id">{{liveSharingOption.id}}</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.rankingData.ddBookDept')" for="ranking-data-ft-ddBookDept">Dd Book Dept</label>
+                        <select class="form-control" id="ranking-data-ft-ddBookDept" name="ddBookDept" v-model="rankingData.ddBookDept">
+                            <option v-bind:value="null"></option>
+                            <option v-bind:value="rankingData.ddBookDept && ddBookDeptOption.id === rankingData.ddBookDept.id ? rankingData.ddBookDept : ddBookDeptOption" v-for="ddBookDeptOption in ddBookDepts" :key="ddBookDeptOption.id">{{ddBookDeptOption.id}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

@@ -60,6 +60,14 @@
                             <router-link :to="{name: 'LiveSharingFtView', params: {liveSharingId: rankingData.liveSharing.id}}">{{rankingData.liveSharing.id}}</router-link>
                         </div>
                     </dd>
+                    <dt>
+                        <span v-text="$t('ftApp.rankingData.ddBookDept')">Dd Book Dept</span>
+                    </dt>
+                    <dd>
+                        <div v-if="rankingData.ddBookDept">
+                            <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: rankingData.ddBookDept.id}}">{{rankingData.ddBookDept.id}}</router-link>
+                        </div>
+                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

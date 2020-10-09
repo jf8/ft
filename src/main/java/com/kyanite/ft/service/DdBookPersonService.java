@@ -58,7 +58,7 @@ public class DdBookPersonService {
      * @return the entity.
      */
     @Transactional(readOnly = true)
-    public Optional<DdBookPerson> findOne(String id) {
+    public Optional<DdBookPerson> findOne(Long id) {
         log.debug("Request to get DdBookPerson : {}", id);
         return ddBookPersonRepository.findById(id);
     }
@@ -68,7 +68,7 @@ public class DdBookPersonService {
      *
      * @param id the id of the entity.
      */
-    public void delete(String id) {
+    public void delete(Long id) {
         log.debug("Request to delete DdBookPerson : {}", id);
         ddBookPersonRepository.deleteById(id);
     }

@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="live_sharing"/>
 
+        <addForeignKeyConstraint baseColumnNames="dd_book_dept_id"
+                                 baseTableName="ranking_data"
+                                 constraintName="fk_ranking_data_dd_book_dept_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dd_book_dept"/>
+
     </changeSet>
 </databaseChangeLog>

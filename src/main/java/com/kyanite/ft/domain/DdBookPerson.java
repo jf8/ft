@@ -22,7 +22,8 @@ public class DdBookPerson implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "unionid")
     private String unionid;
@@ -104,13 +105,12 @@ public class DdBookPerson implements Serializable {
     @JsonIgnore
     private Set<DdBookDept> ddBookDepts = new HashSet<>();
 
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

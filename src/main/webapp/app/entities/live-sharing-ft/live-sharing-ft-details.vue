@@ -16,6 +16,12 @@
                     <dd>
                         <span v-if="liveSharing.day">{{$d(Date.parse(liveSharing.day), 'long') }}</span>
                     </dd>
+                    <dt>
+                        <span v-text="$t('ftApp.liveSharing.confNumber')">Conf Number</span>
+                    </dt>
+                    <dd>
+                        <span>{{liveSharing.confNumber}}</span>
+                    </dd>
                 </dl>
                 <button type="submit"
                         v-on:click.prevent="previousState()"

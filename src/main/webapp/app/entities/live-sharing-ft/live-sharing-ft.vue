@@ -27,6 +27,7 @@
                     <th v-on:click="changeOrder('id')"><span v-text="$t('global.field.id')">ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('name')"><span v-text="$t('ftApp.liveSharing.name')">Name</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('day')"><span v-text="$t('ftApp.liveSharing.day')">Day</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'day'"></jhi-sort-indicator></th>
+                    <th v-on:click="changeOrder('confNumber')"><span v-text="$t('ftApp.liveSharing.confNumber')">Conf Number</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'confNumber'"></jhi-sort-indicator></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -38,6 +39,7 @@
                     </td>
                     <td>{{liveSharing.name}}</td>
                     <td>{{liveSharing.day ? $d(Date.parse(liveSharing.day), 'short') : ''}}</td>
+                    <td>{{liveSharing.confNumber}}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <router-link :to="{name: 'LiveSharingFtView', params: {liveSharingId: liveSharing.id}}" tag="button" class="btn btn-info btn-sm details">

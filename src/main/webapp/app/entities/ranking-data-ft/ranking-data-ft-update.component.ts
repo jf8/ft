@@ -9,6 +9,9 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 import LiveSharingFtService from '../live-sharing-ft/live-sharing-ft.service';
 import { ILiveSharingFt } from '@/shared/model/live-sharing-ft.model';
 
+import DdBookDeptFtService from '../dd-book-dept-ft/dd-book-dept-ft.service';
+import { IDdBookDeptFt } from '@/shared/model/dd-book-dept-ft.model';
+
 import AlertService from '@/shared/alert/alert.service';
 import { IRankingDataFt, RankingDataFt } from '@/shared/model/ranking-data-ft.model';
 import RankingDataFtService from './ranking-data-ft.service';
@@ -37,6 +40,10 @@ export default class RankingDataFtUpdate extends Vue {
   @Inject('liveSharingService') private liveSharingService: () => LiveSharingFtService;
 
   public liveSharings: ILiveSharingFt[] = [];
+
+  @Inject('ddBookDeptService') private ddBookDeptService: () => DdBookDeptFtService;
+
+  public ddBookDepts: IDdBookDeptFt[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -123,6 +130,11 @@ export default class RankingDataFtUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.liveSharings = res.data;
+      });
+    this.ddBookDeptService()
+      .retrieve()
+      .then(res => {
+        this.ddBookDepts = res.data;
       });
   }
 }

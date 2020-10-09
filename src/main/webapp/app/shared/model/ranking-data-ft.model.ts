@@ -1,4 +1,5 @@
 import { ILiveSharingFt } from '@/shared/model/live-sharing-ft.model';
+import { IDdBookDeptFt } from '@/shared/model/dd-book-dept-ft.model';
 
 export interface IRankingDataFt {
   id?: number;
@@ -11,6 +12,7 @@ export interface IRankingDataFt {
   day?: Date;
   isLeaf?: boolean;
   liveSharing?: ILiveSharingFt;
+  ddBookDept?: IDdBookDeptFt;
 }
 
 export class RankingDataFt implements IRankingDataFt {
@@ -24,7 +26,8 @@ export class RankingDataFt implements IRankingDataFt {
     public parentId?: number,
     public day?: Date,
     public isLeaf?: boolean,
-    public liveSharing?: ILiveSharingFt
+    public liveSharing?: ILiveSharingFt,
+    public ddBookDept?: IDdBookDeptFt
   ) {
     this.isLeaf = this.isLeaf || false;
   }

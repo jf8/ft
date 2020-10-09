@@ -23,6 +23,11 @@
                             @change="updateInstantField('day', $event)"/>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="form-control-label" v-text="$t('ftApp.liveSharing.confNumber')" for="live-sharing-ft-confNumber">Conf Number</label>
+                        <input type="text" class="form-control" name="confNumber" id="live-sharing-ft-confNumber"
+                            :class="{'valid': !$v.liveSharing.confNumber.$invalid, 'invalid': $v.liveSharing.confNumber.$invalid }" v-model="$v.liveSharing.confNumber.$model" />
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

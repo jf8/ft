@@ -18,6 +18,7 @@
       },
       "name": "Name",
       "day": "Day",
+      "confNumber": "Conf Number",
       "rankingData": "Ranking Data"
     }
   }

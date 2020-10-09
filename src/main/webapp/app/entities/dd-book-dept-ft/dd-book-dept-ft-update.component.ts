@@ -2,6 +2,9 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
 
+import RankingDataFtService from '../ranking-data-ft/ranking-data-ft.service';
+import { IRankingDataFt } from '@/shared/model/ranking-data-ft.model';
+
 import DdBookPersonFtService from '../dd-book-person-ft/dd-book-person-ft.service';
 import { IDdBookPersonFt } from '@/shared/model/dd-book-person-ft.model';
 
@@ -42,6 +45,10 @@ export default class DdBookDeptFtUpdate extends Vue {
   public ddBookDept: IDdBookDeptFt = new DdBookDeptFt();
 
   public ddBookDepts: IDdBookDeptFt[] = [];
+
+  @Inject('rankingDataService') private rankingDataService: () => RankingDataFtService;
+
+  public rankingData: IRankingDataFt[] = [];
 
   @Inject('ddBookPersonService') private ddBookPersonService: () => DdBookPersonFtService;
 
@@ -113,6 +120,11 @@ export default class DdBookDeptFtUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.ddBookDepts = res.data;
+      });
+    this.rankingDataService()
+      .retrieve()
+      .then(res => {
+        this.rankingData = res.data;
       });
     this.ddBookPersonService()
       .retrieve()

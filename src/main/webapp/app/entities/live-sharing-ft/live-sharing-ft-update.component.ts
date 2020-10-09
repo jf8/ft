@@ -17,6 +17,7 @@ const validations: any = {
   liveSharing: {
     name: {},
     day: {},
+    confNumber: {},
   },
 };
 

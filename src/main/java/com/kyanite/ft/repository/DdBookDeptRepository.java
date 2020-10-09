@@ -26,9 +26,4 @@ public interface DdBookDeptRepository extends JpaRepository<DdBookDept, Long> {
 
     @Query("select ddBookDept from DdBookDept ddBookDept left join fetch ddBookDept.ddBookPeople where ddBookDept.id =:id")
     Optional<DdBookDept> findOneWithEagerRelationships(@Param("id") Long id);
-
-    List<DdBookDept> findAllByParent(DdBookDept parent);
-
-    List<DdBookDept> findAllByNameLike(String keyword);
-
 }

@@ -41,6 +41,13 @@
       "otherEntityRelationshipName": "rankingData",
       "relationshipName": "liveSharing",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ddBookDept",
+      "otherEntityRelationshipName": "rankingData",
+      "relationshipName": "ddBookDept",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200928085546",
