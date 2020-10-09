@@ -33,6 +33,7 @@
       "ext": "Ext",
       "isLeaf": "Is Leaf",
       "children": "Children",
+      "rankingData": "Ranking Data",
       "ddBookPerson": "Dd Book Person",
       "parent": "Parent",
       "ddUser": "Dd User"

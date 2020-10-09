@@ -74,6 +74,12 @@
       "relationshipName": "children"
     },
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rankingData",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "rankingData"
+    },
+    {
       "relationshipType": "many-to-many",
       "otherEntityName": "ddBookPerson",
       "otherEntityRelationshipName": "ddBookDept",

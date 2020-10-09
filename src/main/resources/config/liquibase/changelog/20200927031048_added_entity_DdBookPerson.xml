@@ -13,7 +13,7 @@
     -->
     <changeSet id="20200927031048-1" author="jhipster">
         <createTable tableName="dd_book_person">
-            <column name="id" type="varchar(191)" >
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="unionid" type="varchar(255)">
@@ -113,7 +113,7 @@
                   file="config/liquibase/fake-data/dd_book_person.csv"
                   separator=";"
                   tableName="dd_book_person">
-            <column name="id" type="string"/>
+            <column name="id" type="numeric"/>
             <column name="unionid" type="string"/>
             <column name="remark" type="string"/>
             <column name="userid" type="string"/>

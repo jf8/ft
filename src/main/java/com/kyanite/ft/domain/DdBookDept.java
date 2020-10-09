@@ -77,6 +77,10 @@ public class DdBookDept implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<DdBookDept> children = new HashSet<>();
 
+    @OneToMany(mappedBy = "ddBookDept")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<RankingData> rankingData = new HashSet<>();
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "dd_book_dept_dd_book_person",
@@ -333,6 +337,31 @@ public class DdBookDept implements Serializable {
 
     public void setChildren(Set<DdBookDept> ddBookDepts) {
         this.children = ddBookDepts;
+    }
+
+    public Set<RankingData> getRankingData() {
+        return rankingData;
+    }
+
+    public DdBookDept rankingData(Set<RankingData> rankingData) {
+        this.rankingData = rankingData;
+        return this;
+    }
+
+    public DdBookDept addRankingData(RankingData rankingData) {
+        this.rankingData.add(rankingData);
+        rankingData.setDdBookDept(this);
+        return this;
+    }
+
+    public DdBookDept removeRankingData(RankingData rankingData) {
+        this.rankingData.remove(rankingData);
+        rankingData.setDdBookDept(null);
+        return this;
+    }
+
+    public void setRankingData(Set<RankingData> rankingData) {
+        this.rankingData = rankingData;
     }
 
     public Set<DdBookPerson> getDdBookPeople() {

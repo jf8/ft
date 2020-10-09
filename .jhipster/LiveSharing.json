@@ -8,6 +8,10 @@
     {
       "fieldName": "day",
       "fieldType": "Instant"
+    },
+    {
+      "fieldName": "confNumber",
+      "fieldType": "String"
     }
   ],
   "relationships": [

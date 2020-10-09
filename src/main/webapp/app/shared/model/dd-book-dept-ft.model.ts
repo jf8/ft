@@ -1,4 +1,5 @@
 import { IDdBookDeptFt } from '@/shared/model/dd-book-dept-ft.model';
+import { IRankingDataFt } from '@/shared/model/ranking-data-ft.model';
 import { IDdBookPersonFt } from '@/shared/model/dd-book-person-ft.model';
 import { IDdUserFt } from '@/shared/model/dd-user-ft.model';
 
@@ -21,6 +22,7 @@ export interface IDdBookDeptFt {
   ext?: string;
   isLeaf?: boolean;
   children?: IDdBookDeptFt[];
+  rankingData?: IRankingDataFt[];
   ddBookPeople?: IDdBookPersonFt[];
   parent?: IDdBookDeptFt;
   ddUsers?: IDdUserFt[];
@@ -46,6 +48,7 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     public ext?: string,
     public isLeaf?: boolean,
     public children?: IDdBookDeptFt[],
+    public rankingData?: IRankingDataFt[],
     public ddBookPeople?: IDdBookPersonFt[],
     public parent?: IDdBookDeptFt,
     public ddUsers?: IDdUserFt[]

@@ -34,6 +34,7 @@
                     <th v-on:click="changeOrder('day')"><span v-text="$t('ftApp.rankingData.day')">Day</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'day'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('isLeaf')"><span v-text="$t('ftApp.rankingData.isLeaf')">Is Leaf</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'isLeaf'"></jhi-sort-indicator></th>
                     <th v-on:click="changeOrder('liveSharing.id')"><span v-text="$t('ftApp.rankingData.liveSharing')">Live Sharing</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'liveSharing.id'"></jhi-sort-indicator></th>
+                    <th v-on:click="changeOrder('ddBookDept.id')"><span v-text="$t('ftApp.rankingData.ddBookDept')">Dd Book Dept</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'ddBookDept.id'"></jhi-sort-indicator></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -54,6 +55,11 @@
                     <td>
                         <div v-if="rankingData.liveSharing">
                             <router-link :to="{name: 'LiveSharingFtView', params: {liveSharingId: rankingData.liveSharing.id}}">{{rankingData.liveSharing.id}}</router-link>
+                        </div>
+                    </td>
+                    <td>
+                        <div v-if="rankingData.ddBookDept">
+                            <router-link :to="{name: 'DdBookDeptFtView', params: {ddBookDeptId: rankingData.ddBookDept.id}}">{{rankingData.ddBookDept.id}}</router-link>
                         </div>
                     </td>
                     <td class="text-right">

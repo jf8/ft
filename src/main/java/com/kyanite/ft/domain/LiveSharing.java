@@ -30,6 +30,9 @@ public class LiveSharing implements Serializable {
     @Column(name = "day")
     private Instant day;
 
+    @Column(name = "conf_number")
+    private String confNumber;
+
     @OneToMany(mappedBy = "liveSharing")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<RankingData> rankingData = new HashSet<>();
@@ -67,6 +70,19 @@ public class LiveSharing implements Serializable {
 
     public void setDay(Instant day) {
         this.day = day;
+    }
+
+    public String getConfNumber() {
+        return confNumber;
+    }
+
+    public LiveSharing confNumber(String confNumber) {
+        this.confNumber = confNumber;
+        return this;
+    }
+
+    public void setConfNumber(String confNumber) {
+        this.confNumber = confNumber;
     }
 
     public Set<RankingData> getRankingData() {
@@ -118,6 +134,7 @@ public class LiveSharing implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", day='" + getDay() + "'" +
+            ", confNumber='" + getConfNumber() + "'" +
             "}";
     }
 }

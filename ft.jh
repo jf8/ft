@@ -4,7 +4,8 @@
 
 entity LiveSharing{
 	name String,
-    day Instant
+    day Instant,
+    confNumber String
 }
 
 entity RankingData{
@@ -128,7 +129,8 @@ relationship ManyToMany {
 
 relationship OneToMany {
    LiveSharing to RankingData,
-   DdBookDept{children} to DdBookDept{parent}
+   DdBookDept{children} to DdBookDept{parent},
+    DdBookDept to RankingData
 }
 
 
