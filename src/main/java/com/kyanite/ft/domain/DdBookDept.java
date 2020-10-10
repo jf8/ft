@@ -81,16 +81,14 @@ public class DdBookDept implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<RankingData> rankingData = new HashSet<>();
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "dd_book_dept_dd_book_person",
-               joinColumns = @JoinColumn(name = "dd_book_dept_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "dd_book_person_id", referencedColumnName = "id"))
-    private Set<DdBookPerson> ddBookPeople = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "children", allowSetters = true)
     private DdBookDept parent;
+
+    @ManyToMany(mappedBy = "ddBookDepts")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnore
+    private Set<DdBookPerson> ddBookPeople = new HashSet<>();
 
     @ManyToMany(mappedBy = "ddBookDepts")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -364,6 +362,19 @@ public class DdBookDept implements Serializable {
         this.rankingData = rankingData;
     }
 
+    public DdBookDept getParent() {
+        return parent;
+    }
+
+    public DdBookDept parent(DdBookDept ddBookDept) {
+        this.parent = ddBookDept;
+        return this;
+    }
+
+    public void setParent(DdBookDept ddBookDept) {
+        this.parent = ddBookDept;
+    }
+
     public Set<DdBookPerson> getDdBookPeople() {
         return ddBookPeople;
     }
@@ -387,19 +398,6 @@ public class DdBookDept implements Serializable {
 
     public void setDdBookPeople(Set<DdBookPerson> ddBookPeople) {
         this.ddBookPeople = ddBookPeople;
-    }
-
-    public DdBookDept getParent() {
-        return parent;
-    }
-
-    public DdBookDept parent(DdBookDept ddBookDept) {
-        this.parent = ddBookDept;
-        return this;
-    }
-
-    public void setParent(DdBookDept ddBookDept) {
-        this.parent = ddBookDept;
     }
 
     public Set<DdUser> getDdUsers() {

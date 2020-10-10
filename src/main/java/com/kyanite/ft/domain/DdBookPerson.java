@@ -1,6 +1,5 @@
 package com.kyanite.ft.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -100,9 +99,11 @@ public class DdBookPerson implements Serializable {
     @Column(name = "parent_depts_id_list")
     private String parentDeptsIdList;
 
-    @ManyToMany(mappedBy = "ddBookPeople")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
+    @JoinTable(name = "dd_book_person_dd_book_dept",
+               joinColumns = @JoinColumn(name = "dd_book_person_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "dd_book_dept_id", referencedColumnName = "id"))
     private Set<DdBookDept> ddBookDepts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

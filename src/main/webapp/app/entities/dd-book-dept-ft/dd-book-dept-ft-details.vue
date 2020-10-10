@@ -101,14 +101,6 @@
                         <span>{{ddBookDept.isLeaf}}</span>
                     </dd>
                     <dt>
-                        <span v-text="$t('ftApp.ddBookDept.ddBookPerson')">Dd Book Person</span>
-                    </dt>
-                    <dd>
-                        <span v-for="(ddBookPerson, i) in ddBookDept.ddBookPeople" :key="ddBookPerson.id">{{i > 0 ? ', ' : ''}}
-                            <router-link :to="{name: 'DdBookPersonFtView', params: {ddBookPersonId: ddBookPerson.id}}">{{ddBookPerson.id}}</router-link>
-                        </span>
-                    </dd>
-                    <dt>
                         <span v-text="$t('ftApp.ddBookDept.parent')">Parent</span>
                     </dt>
                     <dd>

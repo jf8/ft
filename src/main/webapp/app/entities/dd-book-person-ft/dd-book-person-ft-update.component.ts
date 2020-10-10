@@ -70,6 +70,7 @@ export default class DdBookPersonFtUpdate extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
+    this.ddBookPerson.ddBookDepts = [];
   }
 
   public save(): void {
@@ -113,5 +114,16 @@ export default class DdBookPersonFtUpdate extends Vue {
       .then(res => {
         this.ddBookDepts = res.data;
       });
+  }
+
+  public getSelected(selectedVals, option): any {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

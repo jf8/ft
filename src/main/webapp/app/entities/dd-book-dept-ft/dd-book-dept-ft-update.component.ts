@@ -77,7 +77,6 @@ export default class DdBookDeptFtUpdate extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
-    this.ddBookDept.ddBookPeople = [];
   }
 
   public save(): void {
@@ -126,31 +125,20 @@ export default class DdBookDeptFtUpdate extends Vue {
       .then(res => {
         this.rankingData = res.data;
       });
-    this.ddBookPersonService()
-      .retrieve()
-      .then(res => {
-        this.ddBookPeople = res.data;
-      });
     this.ddBookDeptService()
       .retrieve()
       .then(res => {
         this.ddBookDepts = res.data;
+      });
+    this.ddBookPersonService()
+      .retrieve()
+      .then(res => {
+        this.ddBookPeople = res.data;
       });
     this.ddUserService()
       .retrieve()
       .then(res => {
         this.ddUsers = res.data;
       });
-  }
-
-  public getSelected(selectedVals, option): any {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

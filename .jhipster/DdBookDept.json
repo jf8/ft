@@ -80,19 +80,19 @@
       "relationshipName": "rankingData"
     },
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "ddBookPerson",
-      "otherEntityRelationshipName": "ddBookDept",
-      "relationshipName": "ddBookPerson",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
       "relationshipType": "many-to-one",
       "otherEntityName": "ddBookDept",
       "otherEntityRelationshipName": "children",
       "relationshipName": "parent",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "ddBookPerson",
+      "otherEntityRelationshipName": "ddBookDept",
+      "relationshipName": "ddBookPerson",
+      "otherEntityField": "id",
+      "ownerSide": false
     },
     {
       "relationshipType": "many-to-many",
