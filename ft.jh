@@ -122,8 +122,8 @@ entity DdUser {
 
 
 relationship ManyToMany {
-    DdBookDept to  DdBookPerson,
-    DdUser  to  DdBookDept
+     DdBookPerson{depts} to  DdBookDept{persons},
+     DdUser  to  DdBookDept
 }
 
 
