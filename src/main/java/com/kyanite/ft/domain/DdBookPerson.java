@@ -1,6 +1,5 @@
 package com.kyanite.ft.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -100,10 +99,12 @@ public class DdBookPerson implements Serializable {
     @Column(name = "parent_depts_id_list")
     private String parentDeptsIdList;
 
-    @ManyToMany(mappedBy = "ddBookPeople")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<DdBookDept> ddBookDepts = new HashSet<>();
+    @JoinTable(name = "dd_book_person_depts",
+               joinColumns = @JoinColumn(name = "dd_book_person_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "depts_id", referencedColumnName = "id"))
+    private Set<DdBookDept> depts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -439,29 +440,29 @@ public class DdBookPerson implements Serializable {
         this.parentDeptsIdList = parentDeptsIdList;
     }
 
-    public Set<DdBookDept> getDdBookDepts() {
-        return ddBookDepts;
+    public Set<DdBookDept> getDepts() {
+        return depts;
     }
 
-    public DdBookPerson ddBookDepts(Set<DdBookDept> ddBookDepts) {
-        this.ddBookDepts = ddBookDepts;
+    public DdBookPerson depts(Set<DdBookDept> ddBookDepts) {
+        this.depts = ddBookDepts;
         return this;
     }
 
-    public DdBookPerson addDdBookDept(DdBookDept ddBookDept) {
-        this.ddBookDepts.add(ddBookDept);
-        ddBookDept.getDdBookPeople().add(this);
+    public DdBookPerson addDepts(DdBookDept ddBookDept) {
+        this.depts.add(ddBookDept);
+        ddBookDept.getPersons().add(this);
         return this;
     }
 
-    public DdBookPerson removeDdBookDept(DdBookDept ddBookDept) {
-        this.ddBookDepts.remove(ddBookDept);
-        ddBookDept.getDdBookPeople().remove(this);
+    public DdBookPerson removeDepts(DdBookDept ddBookDept) {
+        this.depts.remove(ddBookDept);
+        ddBookDept.getPersons().remove(this);
         return this;
     }
 
-    public void setDdBookDepts(Set<DdBookDept> ddBookDepts) {
-        this.ddBookDepts = ddBookDepts;
+    public void setDepts(Set<DdBookDept> ddBookDepts) {
+        this.depts = ddBookDepts;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

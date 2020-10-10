@@ -52,15 +52,6 @@ public class DdBookDeptService {
 
 
     /**
-     * Get all the ddBookDepts with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    public Page<DdBookDept> findAllWithEagerRelationships(Pageable pageable) {
-        return ddBookDeptRepository.findAllWithEagerRelationships(pageable);
-    }
-
-    /**
      * Get one ddBookDept by id.
      *
      * @param id the id of the entity.
@@ -69,7 +60,7 @@ public class DdBookDeptService {
     @Transactional(readOnly = true)
     public Optional<DdBookDept> findOne(Long id) {
         log.debug("Request to get DdBookDept : {}", id);
-        return ddBookDeptRepository.findOneWithEagerRelationships(id);
+        return ddBookDeptRepository.findById(id);
     }
 
     /**

@@ -23,8 +23,8 @@ export interface IDdBookDeptFt {
   isLeaf?: boolean;
   children?: IDdBookDeptFt[];
   rankingData?: IRankingDataFt[];
-  ddBookPeople?: IDdBookPersonFt[];
   parent?: IDdBookDeptFt;
+  persons?: IDdBookPersonFt[];
   ddUsers?: IDdUserFt[];
 }
 
@@ -49,8 +49,8 @@ export class DdBookDeptFt implements IDdBookDeptFt {
     public isLeaf?: boolean,
     public children?: IDdBookDeptFt[],
     public rankingData?: IRankingDataFt[],
-    public ddBookPeople?: IDdBookPersonFt[],
     public parent?: IDdBookDeptFt,
+    public persons?: IDdBookPersonFt[],
     public ddUsers?: IDdUserFt[]
   ) {
     this.createDeptGroup = this.createDeptGroup || false;

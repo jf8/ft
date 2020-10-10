@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity DdBookPerson.
+    -->
+    <changeSet id="20200927031048-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dd_book_person_id"
+                                 baseTableName="dd_book_person_depts"
+                                 constraintName="fk_dd_book_person_depts_dd_book_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dd_book_person"/>
+
+        <addForeignKeyConstraint baseColumnNames="depts_id"
+                                 baseTableName="dd_book_person_depts"
+                                 constraintName="fk_dd_book_person_depts_depts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dd_book_dept"/>
+        
+    </changeSet>
+</databaseChangeLog>

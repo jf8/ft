@@ -81,16 +81,14 @@ public class DdBookDept implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<RankingData> rankingData = new HashSet<>();
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "dd_book_dept_dd_book_person",
-               joinColumns = @JoinColumn(name = "dd_book_dept_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "dd_book_person_id", referencedColumnName = "id"))
-    private Set<DdBookPerson> ddBookPeople = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = "children", allowSetters = true)
     private DdBookDept parent;
+
+    @ManyToMany(mappedBy = "depts")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnore
+    private Set<DdBookPerson> persons = new HashSet<>();
 
     @ManyToMany(mappedBy = "ddBookDepts")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -364,31 +362,6 @@ public class DdBookDept implements Serializable {
         this.rankingData = rankingData;
     }
 
-    public Set<DdBookPerson> getDdBookPeople() {
-        return ddBookPeople;
-    }
-
-    public DdBookDept ddBookPeople(Set<DdBookPerson> ddBookPeople) {
-        this.ddBookPeople = ddBookPeople;
-        return this;
-    }
-
-    public DdBookDept addDdBookPerson(DdBookPerson ddBookPerson) {
-        this.ddBookPeople.add(ddBookPerson);
-        ddBookPerson.getDdBookDepts().add(this);
-        return this;
-    }
-
-    public DdBookDept removeDdBookPerson(DdBookPerson ddBookPerson) {
-        this.ddBookPeople.remove(ddBookPerson);
-        ddBookPerson.getDdBookDepts().remove(this);
-        return this;
-    }
-
-    public void setDdBookPeople(Set<DdBookPerson> ddBookPeople) {
-        this.ddBookPeople = ddBookPeople;
-    }
-
     public DdBookDept getParent() {
         return parent;
     }
@@ -400,6 +373,31 @@ public class DdBookDept implements Serializable {
 
     public void setParent(DdBookDept ddBookDept) {
         this.parent = ddBookDept;
+    }
+
+    public Set<DdBookPerson> getPersons() {
+        return persons;
+    }
+
+    public DdBookDept persons(Set<DdBookPerson> ddBookPeople) {
+        this.persons = ddBookPeople;
+        return this;
+    }
+
+    public DdBookDept addPersons(DdBookPerson ddBookPerson) {
+        this.persons.add(ddBookPerson);
+        ddBookPerson.getDepts().add(this);
+        return this;
+    }
+
+    public DdBookDept removePersons(DdBookPerson ddBookPerson) {
+        this.persons.remove(ddBookPerson);
+        ddBookPerson.getDepts().remove(this);
+        return this;
+    }
+
+    public void setPersons(Set<DdBookPerson> ddBookPeople) {
+        this.persons = ddBookPeople;
     }
 
     public Set<DdUser> getDdUsers() {

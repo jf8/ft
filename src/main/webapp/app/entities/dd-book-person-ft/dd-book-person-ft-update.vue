@@ -134,6 +134,12 @@
                         <input type="text" class="form-control" name="parentDeptsIdList" id="dd-book-person-ft-parentDeptsIdList"
                             :class="{'valid': !$v.ddBookPerson.parentDeptsIdList.$invalid, 'invalid': $v.ddBookPerson.parentDeptsIdList.$invalid }" v-model="$v.ddBookPerson.parentDeptsIdList.$model" />
                     </div>
+                    <div class="form-group">
+                        <label v-text="$t('ftApp.ddBookPerson.depts')" for="dd-book-person-ft-depts">Depts</label>
+                        <select class="form-control" id="dd-book-person-ft-depts" multiple name="depts" v-model="ddBookPerson.depts">
+                            <option v-bind:value="getSelected(ddBookPerson.depts, ddBookDeptOption)" v-for="ddBookDeptOption in ddBookDepts" :key="ddBookDeptOption.id">{{ddBookDeptOption.id}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <button type="button" id="cancel-save" class="btn btn-secondary" v-on:click="previousState()">

@@ -27,7 +27,7 @@ export interface IDdBookPersonFt {
   position?: string;
   roles?: string;
   parentDeptsIdList?: string;
-  ddBookDepts?: IDdBookDeptFt[];
+  depts?: IDdBookDeptFt[];
 }
 
 export class DdBookPersonFt implements IDdBookPersonFt {
@@ -58,7 +58,7 @@ export class DdBookPersonFt implements IDdBookPersonFt {
     public position?: string,
     public roles?: string,
     public parentDeptsIdList?: string,
-    public ddBookDepts?: IDdBookDeptFt[]
+    public depts?: IDdBookDeptFt[]
   ) {
     this.isBoss = this.isBoss || false;
     this.isSenior = this.isSenior || false;

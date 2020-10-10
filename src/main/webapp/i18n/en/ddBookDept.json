@@ -34,8 +34,8 @@
       "isLeaf": "Is Leaf",
       "children": "Children",
       "rankingData": "Ranking Data",
-      "ddBookPerson": "Dd Book Person",
       "parent": "Parent",
+      "persons": "Persons",
       "ddUser": "Dd User"
     }
   }

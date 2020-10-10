@@ -41,7 +41,7 @@
       "position": "Position",
       "roles": "Roles",
       "parentDeptsIdList": "Parent Depts Id List",
-      "ddBookDept": "Dd Book Dept"
+      "depts": "Depts"
     }
   }
 }

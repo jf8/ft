@@ -52,6 +52,15 @@ public class DdBookPersonService {
 
 
     /**
+     * Get all the ddBookPeople with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<DdBookPerson> findAllWithEagerRelationships(Pageable pageable) {
+        return ddBookPersonRepository.findAllWithEagerRelationships(pageable);
+    }
+
+    /**
      * Get one ddBookPerson by id.
      *
      * @param id the id of the entity.
@@ -60,7 +69,7 @@ public class DdBookPersonService {
     @Transactional(readOnly = true)
     public Optional<DdBookPerson> findOne(Long id) {
         log.debug("Request to get DdBookPerson : {}", id);
-        return ddBookPersonRepository.findById(id);
+        return ddBookPersonRepository.findOneWithEagerRelationships(id);
     }
 
     /**

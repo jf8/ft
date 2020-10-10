@@ -106,10 +106,10 @@
     {
       "relationshipType": "many-to-many",
       "otherEntityName": "ddBookDept",
-      "otherEntityRelationshipName": "ddBookPerson",
-      "relationshipName": "ddBookDept",
+      "otherEntityRelationshipName": "persons",
+      "relationshipName": "depts",
       "otherEntityField": "id",
-      "ownerSide": false
+      "ownerSide": true
     }
   ],
   "changelogDate": "20200927031048",

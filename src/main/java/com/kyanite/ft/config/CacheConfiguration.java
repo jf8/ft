@@ -62,6 +62,8 @@ public class CacheConfiguration {
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName());
             createCache(cm, com.kyanite.ft.domain.DdUser.class.getName() + ".ddBookDepts");
             createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".rankingData");
+            createCache(cm, com.kyanite.ft.domain.DdBookDept.class.getName() + ".persons");
+            createCache(cm, com.kyanite.ft.domain.DdBookPerson.class.getName() + ".depts");
             // jhipster-needle-ehcache-add-entry
             JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
             javax.cache.configuration.Configuration<Object, Object> tokenConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
