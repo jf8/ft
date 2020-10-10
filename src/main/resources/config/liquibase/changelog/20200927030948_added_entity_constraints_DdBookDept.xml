@@ -8,18 +8,6 @@
     -->
     <changeSet id="20200927030948-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="dd_book_dept_id"
-                                 baseTableName="dd_book_dept_dd_book_person"
-                                 constraintName="fk_dd_book_dept_dd_book_person_dd_book_dept_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dd_book_dept"/>
-
-        <addForeignKeyConstraint baseColumnNames="dd_book_person_id"
-                                 baseTableName="dd_book_dept_dd_book_person"
-                                 constraintName="fk_dd_book_dept_dd_book_person_dd_book_person_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dd_book_person"/>
-        
         <addForeignKeyConstraint baseColumnNames="parent_id"
                                  baseTableName="dd_book_dept"
                                  constraintName="fk_dd_book_dept_parent_id"

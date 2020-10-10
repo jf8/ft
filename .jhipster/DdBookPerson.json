@@ -109,7 +109,7 @@
       "otherEntityRelationshipName": "ddBookPerson",
       "relationshipName": "ddBookDept",
       "otherEntityField": "id",
-      "ownerSide": false
+      "ownerSide": true
     }
   ],
   "changelogDate": "20200927031048",
