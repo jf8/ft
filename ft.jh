@@ -122,7 +122,7 @@ entity DdUser {
 
 
 relationship ManyToMany {
-    DdBookDept to  DdBookPerson,
+     DdBookPerson to  DdBookDept,
     DdUser  to  DdBookDept
 }
 
